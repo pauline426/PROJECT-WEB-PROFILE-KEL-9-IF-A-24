@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tentang Kami | Serba Serbi Nasi Bu Henny</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --orange:#f27202;
+    --orange-2:#ff8a2b;
+    --dark:#111;
+    --muted:#6b6b6b;
+    --white:#ffffff;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:"Poppins",sans-serif;
+    color:var(--dark);
+    background:linear-gradient(180deg,#fff 0%, #fffaf6 50%, #fff 100%);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+
+  /* NAVBAR (centered) */
+  header{
+    position:fixed;left:0;right:0;top:0;
+    z-index:60;
+    display:flex;align-items:center;justify-content:center;
+    padding:18px 6%;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(6px);
+    box-shadow:0 6px 20px rgba(0,0,0,0.06);
+  }
+  .nav-inner{width:1200px;display:flex;align-items:center;justify-content:center;position:relative}
+  .brand{
+    position:absolute;left:0;display:flex;align-items:center;gap:10px;
+  }
+  .brand img{height:48px;width:auto;border-radius:6px;box-shadow:0 6px 18px rgba(242,114,2,0.12)}
+  .brand h3{font-size:14px;margin:0;color:var(--orange);font-weight:700}
+  nav{display:flex;gap:28px}
+  nav a{color:var(--dark);text-decoration:none;font-weight:600;opacity:0.95;transition:color .25s,transform .18s}
+  nav a:hover{color:var(--orange);transform:translateY(-2px)}
+  nav a.active{color:var(--orange)}
+
+  /* Wave background large (subtle) */
+  .wave-wrap{position:fixed;left:-10%;top:0;width:120%;height:420px;pointer-events:none;z-index:0;opacity:0.95}
+  .big-wave{position:absolute;left:0;right:0;bottom:-20px;height:220px;background:radial-gradient(circle at 10% 30%, rgba(242,114,2,0.08), transparent 20%), radial-gradient(circle at 80% 20%, rgba(255,138,43,0.06), transparent 15%), linear-gradient(180deg, transparent 40%, #fff8f0 100%);filter:blur(40px);transform:translateY(0);animation:waveSlow 8s ease-in-out infinite alternate}
+  @keyframes waveSlow{0%{transform:translateX(-5%) translateY(0)}100%{transform:translateX(5%) translateY(-12px)}}
+
+  /* Container */
+  .container{max-width:1200px;margin:0 auto;padding:0 6%;position:relative;z-index:2}
+
+  /* HERO / NARRATIVE */
+  .hero{
+    padding:130px 0 40px;
+    display:flex;gap:48px;align-items:center;justify-content:space-between;
+  }
+  .hero-left{flex:0 0 58%}
+  .eyebrow{color:var(--orange);font-weight:700;letter-spacing:.6px;margin-bottom:12px}
+  .title{
+    font-family:"Playfair Display",serif;
+    font-size:44px;color:var(--dark);line-height:1.02;margin-bottom:18px;
+    text-shadow:0 6px 20px rgba(242,114,2,0.03)
+  }
+  .lead{color:var(--muted);font-size:17px;line-height:1.75}
+  .type-line{font-weight:600;color:#333;margin-top:18px;min-height:48px}
+  .cta-row{margin-top:26px;display:flex;gap:14px;align-items:center}
+  .btn{
+    background:linear-gradient(90deg,var(--orange),var(--orange-2));
+    color:#fff;padding:10px 18px;border-radius:999px;border:0;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(242,114,2,0.18);
+    transition:transform .18s,box-shadow .18s;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(242,114,2,0.24)}
+
+  /* hero right image card with floating effect */
+  .hero-right{flex:0 0 38%;display:flex;justify-content:flex-end}
+  .card{
+    width:360px;height:400px;border-radius:22px;background:linear-gradient(180deg,#fff,#fff8f2);
+    box-shadow:0 20px 50px rgba(0,0,0,0.12);position:relative;overflow:hidden;transform:translateY(0);
+    transition:transform .45s cubic-bezier(.2,.9,.25,1)
+  }
+  .card:hover{transform:translateY(-10px)}
+  .card img{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* Floating micro elements */
+  .floating{
+    position:absolute;width:70px;height:70px;border-radius:14px;background:var(--white);box-shadow:0 10px 30px rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;
+    transform:translateY(0);
+  }
+  .f1{left:-18%;top:10%;opacity:.95}
+  .f2{left:10%;top:-10%}
+  .f3{right:-6%;bottom:6%}
+  @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+  .floating{animation:floaty 4s ease-in-out infinite}
+
+  /* SECTION: HIGHLIGHTS (fun facts) */
+  .highlights{display:flex;gap:20px;justify-content:space-between;margin-top:26px}
+  .stat{
+    background:#fff;border-radius:16px;padding:18px 20px;width:30%;box-shadow:0 10px 30px rgba(0,0,0,0.06);text-align:center;
+  }
+  .stat h3{font-size:28px;color:var(--dark);margin-bottom:6px}
+  .stat p{color:var(--muted);font-weight:600}
+
+  /* Review section: auto transition block */
+  .stage{position:relative;margin-top:36px;overflow:hidden;border-radius:18px;background:#fff;padding:28px 20px;box-shadow:0 14px 40px rgba(0,0,0,0.06)}
+  .stage-inner{display:flex;gap:20px;align-items:center;flex-wrap:nowrap;transition:transform .7s ease}
+  .review-card{
+    min-width:280px;background:linear-gradient(180deg,#fff,#fffbf6);padding:18px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.07);
+  }
+  .review-card h4{color:var(--orange);margin-bottom:6px}
+  .review-card p{color:#444;font-size:14px;line-height:1.6}
+  .review-meta{display:flex;align-items:center;gap:10px;margin-top:12px}
+  .avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+
+  /* small controls */
+  .controls{display:flex;gap:10px;align-items:center;position:absolute;right:18px;top:18px}
+  .dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.12);cursor:pointer}
+  .dot.active{background:var(--orange)}
+
+  /* CTA footer block inside page */
+  .page-cta{margin-top:38px;padding:30px;border-radius:14px;background:linear-gradient(90deg,#fff,#fff9f2);display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:0 12px 40px rgba(0,0,0,0.06)}
+  .page-cta .left h3{font-size:20px;color:var(--dark);margin-bottom:8px}
+  .page-cta .left p{color:var(--muted)}
+  .page-cta .right{display:flex;gap:14px;align-items:center}
+
+  /* responsive */
+  @media(max-width:1000px){
+    .hero{flex-direction:column;padding:120px 5% 40px}
+    .hero-left{width:100%}
+    .hero-right{width:100%;justify-content:center;margin-top:18px}
+    .card{width:320px;height:280px}
+    .highlights{flex-direction:column}
+    .stat{width:100%}
+    .stage-inner{gap:14px}
+  }
+  @media(max-width:520px){
+    .title{font-size:28px}
+    .nav-inner{padding:0 12px}
+    nav a{font-size:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Wave soft background -->
+<div class="wave-wrap" aria-hidden="true"><div class="big-wave"></div></div>
+
+<header>
+  <div class="nav-inner container">
+    <div class="brand">
+      <!-- Replace LOGO_URL with your logo file or data URL -->
+      <img src="img/LOGO_SERBA_SERBI_NASI_BU_HENNY-01-removebg-preview.png" alt="Logo Bu Henny">
+      <h3>Serba Serbi Nasi Bu Henny</h3>
+    </div>
+
+    <nav aria-label="Main Navigation">
+      <a href="#">Beranda</a>
+      <a href="#" class="active">Tentang</a>
+      <a href="#">Menu</a>
+      <a href="#">Staf</a>
+      <a href="#">Lokasi</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HERO / narrative -->
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <div class="eyebrow">Rumah Makan Khas Sunda</div>
+      <h1 class="title">Kenikmatan Rumahan — <span style="color:var(--dark)">Setiap Suapan</span></h1>
+      <p class="lead">Warung Nasi Serba Serbi Bu Henny hadir membawa resep turun-temurun, bahan pilihan, dan rasa yang membuat rindu. Berdiri sejak <strong>2024</strong>, kami percaya setiap hidangan harus terasa hangat seperti pelukan.</p>
+
+      <!-- Typing / narrative area -->
+      <div class="type-line" id="typeLine" aria-live="polite"></div>
+
+      <div class="cta-row">
+        <button class="btn" id="ctaMenu">Lihat Menu</button>
+        <button class="btn" id="ctaOrder" style="background:#fff;color:var(--orange);border:2px solid var(--orange)">Pesan Sekarang</button>
+      </div>
+
+      <!-- highlights -->
+      <div class="highlights" style="margin-top:26px">
+        <div class="stat"><h3 id="count-served"></h3><p>Porsi Terjual</p></div>
+        <div class="stat"><h3>4.9★</h3><p>Rating Rata-rata</p></div>
+        <div class="stat"><h3>100+</h3><p>Menu & Varian</p></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="card" aria-hidden="true">
+        <img src="img/nasi_liwet.jpg" alt="Gambar Makanan">
+      </div>
+
+  </section>
+
+  <!-- stage area switches between narrative and reviews -->
+  <section class="stage" id="stage">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+      <strong style="font-size:18px;color:var(--dark)">Apa Kata Pelanggan</strong>
+      <div class="controls" id="controls"></div>
+    </div>
+
+    <div class="stage-inner" id="stageInner" aria-live="polite">
+      <!-- Review cards (multiple platforms) -->
+      <div class="review-card">
+        <h4>GoFood — Dita</h4>
+        <p>"Masakannya enak, selalu hangat dan porsinya pas. Sambal juara!"</p>
+        <div class="review-meta"><img class="avatar" src="https://i.pravatar.cc/100?img=12" alt="Dita"> <div style="font-size:13px;color:var(--muted)">Dipesan via GoFood • 11 Juli 2025</div></div>
+      </div>
+
+      <div class="review-card">
+        <h4>GrabFood — Rian</h4>
+        <p>"Cepat dikirim, rasa tetap konsisten. Favorit keluarga kami."</p>
+        <div class="review-meta"><img class="avatar" src="https://i.pravatar.cc/100?img=5" alt="Rian"> <div style="font-size:13px;color:var(--muted)">Dipesan via GrabFood • 20 Juni 2025</div></div>
+      </div>
+
+      <div class="review-card">
+        <h4>ShopeeFood — Lestari</h4>
+        <p>"Worth it! Harga pas, rasa menenangkan seperti masakan rumah."</p>
+        <div class="review-meta"><img class="avatar" src="https://i.pravatar.cc/100?img=27" alt="Lestari"> <div style="font-size:13px;color:var(--muted)">Dipesan via ShopeeFood • 5 Juli 2025</div></div>
+      </div>
+
+      <div class="review-card">
+        <h4>GoFood — Budi</h4>
+        <p>"Top service & tasty! Nasi goreng komplitnya recommended."</p>
+        <div class="review-meta"><img class="avatar" src="https://i.pravatar.cc/100?img=30" alt="Budi"> <div style="font-size:13px;color:var(--muted)">Dipesan • 27 Feb 2025</div></div>
+      </div>
+
+      <div class="review-card">
+        <h4>GrabFood — Nur</h4>
+        <p>"Selalu puas. Pedasnya pas dan lauknya selalu fresh."</p>
+        <div class="review-meta"><img class="avatar" src="https://i.pravatar.cc/100?img=45" alt="Nur"> <div style="font-size:13px;color:var(--muted)">Dipesan • 10 Juli 2025</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- page CTA -->
+  <section class="page-cta" id="pageCta">
+    <div class="left">
+      <h3>Siap merasakan? Pesan sekarang atau kunjungi kami.</h3>
+      <p>Gratis es teh untuk 50 pembeli pertama setiap weekend.</p>
+    </div>
+    <div class="right">
+      <button class="btn" onclick="location.href='Menu'">Lihat Menu</button>
+      <button class="btn" style="background:#fff;color:var(--orange);border:2px solid var(--orange)" onclick="location.href='#'">Pesan</button>
+    </div>
+  </section>
+
+</main>
+
+<footer style="margin-top:80px;background:#111;color:#fff;padding:26px;text-align:center">
+  © 2025 Serba Serbi Nasi Bu Henny — Cita Rasa Rumahan yang Selalu Dirindukan
+</footer>
+
+<script>
+
+const typeLine = document.getElementById('typeLine');
+const typeLines = [
+  "Kami mengolah resep keluarga dengan cinta dan bahan pilihan.",
+  "Setiap hidangan diracik agar terasa seperti pulang ke rumah.",
+  "Terbuka untuk semua kalangan — lezat, sehat, terjangkau."
+];
+
+let tIndex = 0;
+let charIndex = 0;
+let typingSpeed = 30;
+let pauseBetweenLines = 1600;
+
+function typeLoop(){
+  if(tIndex >= typeLines.length){ // stop after finished; keep last line
+    return;
+  }
+  const current = typeLines[tIndex];
+  if(charIndex < current.length){
+    typeLine.textContent = current.slice(0, charIndex+1) + '▌';
+    charIndex++;
+    setTimeout(typeLoop, typingSpeed);
+  } else {
+    typeLine.textContent = current;
+    // pause then next line (or end)
+    setTimeout(()=>{
+      tIndex++;
+      charIndex=0;
+      if(tIndex < typeLines.length){
+        typeLine.textContent = '';
+        typeLoop();
+      } else {
+        // after finished typing all lines, start auto transition to reviews
+        startAutoStage();
+      }
+    }, pauseBetweenLines);
+  }
+}
+typeLoop();
+
+/* -------------------------
+  Count-up animation for porsi terjual
+--------------------------*/
+function countUp(el, end, duration=1800){
+  let start = 0;
+  const range = end - start;
+  const stepTime = Math.abs(Math.floor(duration / range));
+  let current = start;
+  const timer = setInterval(()=>{
+    current +=  Math.max(1, Math.floor(range/40));
+    if(current >= end){
+      el.textContent = end.toLocaleString();
+      clearInterval(timer);
+    } else {
+      el.textContent = current.toLocaleString();
+    }
+  }, stepTime);
+}
+// start small demo count (simulate numbers)
+document.addEventListener('DOMContentLoaded', ()=>{ countUp(document.getElementById('count-served'), 10234, 1300); });
+
+/* -------------------------
+  Review carousel auto & controls
+--------------------------*/
+const stageInner = document.getElementById('stageInner');
+const reviews = Array.from(stageInner.children);
+let currentSlide = 0;
+const slideWidth = 320; // approximate card + gap
+const controlsWrap = document.getElementById('controls');
+
+// create small dots
+reviews.forEach((r,i)=>{
+  const dot = document.createElement('div');
+  dot.classList.add('dot');
+  if(i===0) dot.classList.add('active');
+  dot.addEventListener('click', ()=>{ goTo(i); resetAuto(); });
+  controlsWrap.appendChild(dot);
+});
+
+const dots = Array.from(document.querySelectorAll('.dot'));
+
+function goTo(i){
+  currentSlide = i;
+  const x = i * (reviews[0].getBoundingClientRect().width + 20);
+  stageInner.style.transform = `translateX(-${x}px)`;
+  dots.forEach(d=>d.classList.remove('active'));
+  dots[i].classList.add('active');
+}
+
+let autoTimer = null;
+function autoSlide(){
+  currentSlide = (currentSlide + 1) % reviews.length;
+  goTo(currentSlide);
+}
+function startAuto(){ autoTimer = setInterval(autoSlide, 4200); }
+function resetAuto(){ clearInterval(autoTimer); startAuto(); }
+
+/* Start auto after narrative complete */
+function startAutoStage(){
+  // smooth entrance (scroll into view)
+  document.getElementById('stage').scrollIntoView({behavior:'smooth', block:'center'});
+  // start auto slide
+  startAuto();
+}
+
+/* start initial auto anyway after 8s as fallback */
+setTimeout(()=>{ if(!autoTimer) startAuto() }, 8000);
+
+/* Pause on hover */
+stageInner.addEventListener('mouseenter', ()=>{ clearInterval(autoTimer); });
+stageInner.addEventListener('mouseleave', ()=>{ resetAuto(); });
+
+/* Optional CTA button handlers */
+document.getElementById('ctaMenu').addEventListener('click', ()=>{ alert("Arahkan ke menu (implementasi selanjutnya)."); });
+document.getElementById('ctaOrder').addEventListener('click', ()=>{ alert("Arahkan ke pemesanan (implementasi selanjutnya)."); });
+
+</script>
+</body>
+</html>
