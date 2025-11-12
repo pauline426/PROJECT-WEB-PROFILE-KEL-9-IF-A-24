@@ -1,27 +1,538 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-   <div class="header">
-    <img src="" alt="">
-    <div class="menu">
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Website Makanan Dinamis</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        transition: background-color 1s ease, color 1s ease;
+        overflow-x: hidden;
+        background-color: #fff;
+        color: #222;
+      }
+
+      /* 🔹 HEADER DENGAN LOGO DAN SHADOW */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        background: transparent;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        color: inherit;
+      }
+
+      .logo {
+        height: 50px;
+        cursor: pointer;
+      }
+
+      nav {
+        flex-grow: 1;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
+      nav ul li {
+        cursor: pointer;
+        font-weight: 600;
+        color: inherit;
+        transition: color 0.3s;
+      }
+      nav ul li:hover {
+        color: #f27202;
+      }
+      .auth {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .auth button {
+        padding: 8px 12px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.4s, color 0.4s;
+        font-size: 1rem;
+        width: 100px;
+      }
+      .signin {
+        background-color: transparent;
+        color: inherit;
+        border: 2px solid currentColor;
+      }
+      .signin:hover {
+        background-color: currentColor;
+        color: #fff;
+      }
+      .signup {
+        background-color: #f27202;
+        color: white;
+        border: 2px solid #f27202;
+      }
+      .signup:hover {
+        background-color: #e05c00;
+        border-color: #e05c00;
+      }
+
+      /* 🔹 Layout utama */
+      main {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        min-height: 400px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .content-wrapper {
+        flex: 1;
+        max-width: 600px;
+        padding-left: 2rem; /* teks agak ke kanan */
+      }
+
+      .text-section {
+        transition: color 1s ease, opacity 0.6s ease;
+        opacity: 1;
+        color: inherit;
+      }
+      .text-section h1 {
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+        color: inherit;
+        transition: color 1s ease;
+      }
+      .text-section p {
+        font-size: 1.1rem;
+        margin-top: 0;
+        margin-bottom: 1.6rem;
+        color: inherit;
+        transition: color 1s ease;
+      }
+
+      .order-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      .qty-box {
+        display: flex;
+        align-items: center;
+        border: 2px solid #f27202;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 120px;
+      }
+      .qty-btn {
+        background-color: #f27202;
+        color: white;
+        border: none;
+        font-weight: bold;
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.3s;
+      }
+      .qty-btn:hover {
+        background-color: #e05c00;
+      }
+      .qty-num {
+        flex: 1;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        user-select: none;
+        color: #f27202;
+      }
+      .order-btn {
+        background-color: #f27202;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.8rem;
+        border-radius: 30px;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(242, 114, 2, 0.3);
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .order-btn:hover {
+        background-color: #e05c00;
+      }
+
+      /* 🔹 Gambar besar kanan */
+      .large-image-container {
+        flex: 0 0 35vw;
+        max-width: 420px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        user-select: none;
+        pointer-events: none;
+        margin-left: -2rem;
+      }
+      .large-image-container img {
+        width: 110%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        transition: opacity 0.8s ease;
+      }
+
+      /* 🔹 Galeri kecil */
+      .mini-gallery {
+        display: flex;
+        gap: 1.2rem;
+        max-width: 100%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        margin-top: 1rem;
+      }
+      .mini-image {
+        width: 140px;
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        background: white;
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .mini-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      }
+      .mini-image img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+        user-select: none;
+      }
+      .mini-image .image-info {
+        background-color: #f27202;
+        color: white;
+        text-align: center;
+        padding: 0.6rem 0.6rem;
+        font-weight: 700;
+        border-radius: 0 0 20px 20px;
+        font-size: 0.95rem;
+        user-select: none;
+        box-shadow: inset 0 0 0 3px white;
+      }
+      .mini-selected {
+        transform: scale(1.1);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+        z-index: 10;
+      }
+
+      .fade-out {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.6s ease;
+      }
+      .fade-in {
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity 0.6s ease;
+      }
+
+      body.dark-mode header,
+      body.dark-mode nav ul li,
+      body.dark-mode .auth,
+      body.dark-mode .logo {
+        color: white !important;
+      }
+      body.dark-mode nav ul li:hover {
+        color: #f8b739 !important;
+      }
+      body.dark-mode .signin {
+        border-color: white !important;
+        color: white !important;
+      }
+      body.dark-mode .signin:hover {
+        background-color: white !important;
+        color: #111 !important;
+      }
+
+      @media screen and (max-width: 900px) {
+        main {
+          flex-direction: column-reverse;
+          gap: 2rem;
+          padding: 1rem;
+        }
+        .content-wrapper {
+          padding-left: 0;
+          text-align: center;
+        }
+        .large-image-container {
+          margin-left: 0;
+          justify-content: center;
+        }
+        .large-image-container img {
+          width: 100%;
+        }
+        .mini-gallery {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="img/logo.png" alt="Logo TokoMakan" class="logo" />
+      <nav>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="member.html">Member</a></li>
-            <li><a href="contack.html">Contack</a></li>
+          <li>Beranda</li>
+          <li>Tentang</li>
+          <li>Menu</li>
+          <li>Stap</li>
+          <li>Lokasi</li>
         </ul>
+      </nav>
+      <div class="auth">
+        <button class="signin">Sign In</button>
+        <button class="signup">Sign Up</button>
+      </div>
+    </header>
 
-        
+    <main>
+      <div class="content-wrapper">
+        <div class="text-section" id="text-section">
+          <h1 id="title">Perpaduan Sempurna Bumbu-Bumbu Indonesia</h1>
+          <p id="desc">Hadirkan Kelezatan Nasi Goreng yang Menggugah Selera</p>
 
+          <div class="order-controls">
+            <div class="qty-box">
+              <button class="qty-btn" id="btn-minus">−</button>
+              <div class="qty-num" id="qty">2</div>
+              <button class="qty-btn" id="btn-plus">+</button>
+            </div>
+            <button class="order-btn" id="order-btn">Pesan Sekarang</button>
+          </div>
 
+          <div class="mini-gallery" id="mini-gallery"></div>
+        </div>
+      </div>
 
-    </div>
-   </div>
-</body>
+      <div class="large-image-container">
+        <img src="img/foto1.png" alt="Gambar Besar Makanan" id="large-image" />
+      </div>
+    </main>
+
+    <script>
+      const foodItems = [
+        {
+          src: "img/foto1.png",
+          title: "Ayam Geprek Pedas",
+          rating: "4.9",
+          price: "Rp 30.000",
+          bgColor1: "#b52a2a",
+          bgColor2: "#d3e5cf",
+          textColor: "#fff",
+          descText:
+            "Nikmati rasa ayam geprek pedas spesial dengan sambal melimpah dan lezat yang menggugah selera.",
+        },
+        {
+          src: "img/foto2.png",
+          title: "Nasi Komplit Istimewa",
+          rating: "4.7",
+          price: "Rp 25.000",
+          bgColor1: "#f6f1e7",
+          bgColor2: "#ffffff",
+          textColor: "#111111",
+          descText:
+            "Hidangan nasi lengkap dengan lauk pauk pilihan yang memanjakan lidah dan menyenangkan hati.",
+        },
+        {
+          src: "img/foto3.png",
+          title: "Sup Iga kaldu hitam Spesial",
+          rating: "4.8",
+          price: "Rp 35.000",
+          bgColor1: "#111111",
+          bgColor2: "#ffffff",
+          textColor: "#f6f1e7",
+          descText:
+            "Sup iga hangat dengan cita rasa kuat yang lezat dan gurih, cocok untuk menghangatkan hari Anda.",
+        },
+      ];
+
+      let currentIndex = 0;
+      const miniGallery = document.getElementById("mini-gallery");
+      const titleEl = document.getElementById("title");
+      const descEl = document.getElementById("desc");
+      const body = document.body;
+      const textSection = document.getElementById("text-section");
+      const largeImage = document.getElementById("large-image");
+
+      const qtyEl = document.getElementById("qty");
+      const btnMinus = document.getElementById("btn-minus");
+      const btnPlus = document.getElementById("btn-plus");
+      let quantity = 2;
+
+      btnMinus.addEventListener("click", () => {
+        if (quantity > 1) {
+          quantity--;
+          qtyEl.textContent = quantity;
+        }
+      });
+      btnPlus.addEventListener("click", () => {
+        if (quantity < 99) {
+          quantity++;
+          qtyEl.textContent = quantity;
+        }
+      });
+
+      function renderMiniGallery() {
+        miniGallery.innerHTML = "";
+        foodItems.forEach((item, i) => {
+          const div = document.createElement("div");
+          div.className = "mini-image";
+          if (i === currentIndex) div.classList.add("mini-selected");
+          div.dataset.index = i;
+
+          const imgEl = document.createElement("img");
+          imgEl.src = item.src;
+          imgEl.alt = item.title;
+
+          const info = document.createElement("div");
+          info.className = "image-info";
+          info.textContent = item.title;
+
+          div.appendChild(imgEl);
+          div.appendChild(info);
+
+          div.addEventListener("click", () => {
+            if (currentIndex !== i) {
+              changeContent(i);
+              resetAutoSlide();
+            }
+          });
+
+          miniGallery.appendChild(div);
+        });
+      }
+
+      let isAnimating = false;
+      function changeContent(newIndex) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const miniImages = miniGallery.querySelectorAll(".mini-image");
+
+        textSection.classList.remove("fade-in");
+        textSection.classList.add("fade-out");
+        miniImages.forEach((img) => {
+          img.classList.remove("fade-in");
+          img.classList.add("fade-out");
+          img.style.pointerEvents = "none";
+        });
+
+        largeImage.style.opacity = "0";
+
+        setTimeout(() => {
+          const data = foodItems[newIndex];
+          titleEl.textContent = data.title;
+          descEl.textContent = data.descText;
+
+          body.style.backgroundColor = data.bgColor1;
+          titleEl.style.color = data.textColor;
+          descEl.style.color = data.textColor;
+          textSection.style.color = data.textColor;
+
+          largeImage.src = data.src;
+
+          if (data.bgColor1 === "#111111") {
+            body.classList.add("dark-mode");
+          } else {
+            body.classList.remove("dark-mode");
+          }
+
+          miniImages.forEach((img, idx) => {
+            img.classList.remove("mini-selected");
+            if (idx === newIndex) img.classList.add("mini-selected");
+          });
+
+          textSection.classList.remove("fade-out");
+          textSection.classList.add("fade-in");
+          miniImages.forEach((img) => {
+            img.classList.remove("fade-out");
+            img.classList.add("fade-in");
+            img.style.pointerEvents = "auto";
+          });
+
+          largeImage.style.opacity = "1";
+
+          currentIndex = newIndex;
+          isAnimating = false;
+        }, 600);
+      }
+
+      let autoSlideInterval = null;
+      function autoSlide() {
+        let nextIndex = (currentIndex + 1) % foodItems.length;
+        changeContent(nextIndex);
+      }
+      function resetAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(autoSlide, 6000);
+      }
+
+      renderMiniGallery();
+
+      window.onload = () => {
+        const miniImages = miniGallery.querySelectorAll(".mini-image");
+        if (miniImages[currentIndex]) {
+          miniImages[currentIndex].classList.add("mini-selected");
+        }
+
+        const initData = foodItems[currentIndex];
+        titleEl.textContent = initData.title;
+        descEl.textContent = initData.descText;
+        body.style.backgroundColor = initData.bgColor1;
+        titleEl.style.color = initData.textColor;
+        descEl.style.color = initData.textColor;
+        textSection.style.color = initData.textColor;
+
+        largeImage.src = initData.src;
+        largeImage.style.opacity = "1";
+
+        if (initData.bgColor1 === "#111111") {
+          body.classList.add("dark-mode");
+        } else {
+          body.classList.remove("dark-mode");
+        }
+
+        autoSlideInterval = setInterval(autoSlide, 6000);
+      };
+    </script>
+  </body>
 </html>
