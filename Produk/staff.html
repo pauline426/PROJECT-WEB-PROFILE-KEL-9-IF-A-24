@@ -102,98 +102,110 @@
     margin-top: 14px;
   }
 
-  /* TEAM GRID */
+  /* TEAM GRID BARU */
   .team-section {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 6% 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .team-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 40px;
   }
 
   .member {
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 50%;
+    width: 250px;
+    height: 300px;
     box-shadow: 0 10px 35px rgba(0,0,0,0.08);
     background: var(--white);
-    transform-style: preserve-3d;
-    perspective: 800px;
     transition: all 0.5s ease;
   }
 
-  .member::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    padding: 2px;
-    background: linear-gradient(45deg, var(--orange), var(--orange-light), var(--white));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+  .member_pelayan {
+    width: 320px;              
+    height: 320px;           
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    background: var(--white);
+    transition: all 0.5s ease;
   }
 
-  .member img {
+  .member img,
+  .member_pelayan img {
     width: 100%;
-    height: 330px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 50%;
     transition: transform .6s ease;
   }
 
   .overlay {
     position: absolute;
     inset: 0;
-    border-radius: 20px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 70%);
+    border-radius: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent 70%);
     opacity: 0;
     transition: opacity .5s ease;
   }
 
   .info {
     position: absolute;
-    bottom: 20px;
+    bottom: 18px;
     left: 0;
     width: 100%;
     text-align: center;
     color: #fff;
     z-index: 2;
-    transform: translateY(30px);
+    transform: translateY(25px);
     opacity: 0;
     transition: all .5s ease;
   }
 
   .info h3 {
-    font-size: 20px;
-    margin-bottom: 4px;
+    font-size: 18px;
     font-weight: 700;
+    margin-bottom: 4px;
   }
 
   .info p {
-    font-size: 14px;
+    font-size: 13px;
     color: #ffe3cd;
   }
 
-  .member:hover img {
+  /* Hover efek untuk member dan pelayan */
+  .member:hover img,
+  .member_pelayan:hover img {
     transform: scale(1.1);
     filter: brightness(1.05);
   }
 
-  .member:hover .overlay {
+  .member:hover .overlay,
+  .member_pelayan:hover .overlay {
     opacity: 1;
   }
 
-  .member:hover .info {
+  .member:hover .info,
+  .member_pelayan:hover .info {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .member:hover {
-    transform: translateY(-10px) rotateY(3deg);
-    box-shadow: 0 25px 50px rgba(242,114,2,0.25);
+  .member:hover,
+  .member_pelayan:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(242,114,2,0.25);
   }
 
   /* Scroll fade */
@@ -245,39 +257,60 @@
 </section>
 
 <section class="team-section">
-  <div class="member fade-in">
-    <img src="https://i.ibb.co/82HShmV/owner.jpg" alt="Owner">
-    <div class="overlay"></div>
-    <div class="info">
-      <h3>Henny Kartika</h3>
-      <p>Owner & Pendiri</p>
+  <!-- Baris 1: Owner -->
+  <div class="team-row fade-in">
+    <div class="member">
+      <img src="img/owner.jpeg" alt="Owner">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Galuh Pauline</h3>
+        <p>Owner & Pendiri</p>
+      </div>
     </div>
   </div>
 
-  <div class="member fade-in">
-    <img src="https://i.ibb.co/LvHYrVm/chef.jpg" alt="Head Chef">
-    <div class="overlay"></div>
-    <div class="info">
-      <h3>Chef Adi Nugraha</h3>
-      <p>Head Chef</p>
+  <!-- Baris 2: Manager -->
+  <div class="team-row fade-in">
+    <div class="member">
+      <img src="img/manager.jpeg" alt="Manager">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Pajri Muhammad</h3>
+        <p>Manager Resto</p>
+      </div>
     </div>
   </div>
 
-  <div class="member fade-in">
-    <img src="https://i.ibb.co/9bZLkrM/barista.jpg" alt="Barista">
-    <div class="overlay"></div>
-    <div class="info">
-      <h3>Mira Santoso</h3>
-      <p>Barista & Beverage Expert</p>
+  <!-- Baris 3: Kepala Koki & Barista -->
+  <div class="team-row fade-in">
+    <div class="member">
+      <img src="img/kepala_koki.jpeg" alt="Kepala Koki">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Dicky Kamiludin</h3>
+        <p>Kepala Koki</p>
+      </div>
+    </div>
+
+    <div class="member">
+      <img src="img/Barista.jpeg" alt="Barista">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Rose Serafina</h3>
+        <p>Barista</p>
+      </div>
     </div>
   </div>
 
-  <div class="member fade-in">
-    <img src="https://i.ibb.co/vPnn9Mc/staff1.jpg" alt="Pelayan">
-    <div class="overlay"></div>
-    <div class="info">
-      <h3>Rian Pratama</h3>
-      <p>Pelayan Utama</p>
+  <!-- Baris 4: Pelayan -->
+  <div class="team-row fade-in">
+    <div class="member_pelayan">
+      <img src="img/pelayann.png" alt="Pelayan" style="50px" height="50px">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Romeo | Carlina | Sandra</h3>
+        <p>Pelayan</p>
+      </div>
     </div>
   </div>
 </section>
