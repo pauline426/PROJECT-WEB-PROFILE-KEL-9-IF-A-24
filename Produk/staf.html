@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staf | Serba Serbi Nasi Bu Henny</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --orange: #f27202;
+    --orange-light: #ff9e41;
+    --white: #fff;
+    --dark: #111;
+    --muted: #666;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(180deg, #fff, #fffaf4);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* NAVBAR */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    z-index: 100;
+    padding: 16px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-inner {
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .brand {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand img {
+    height: 45px;
+    width: auto;
+    border-radius: 8px;
+  }
+
+  .brand h3 {
+    font-size: 14px;
+    color: var(--orange);
+    font-weight: 700;
+  }
+
+  nav {
+    display: flex;
+    gap: 28px;
+  }
+
+  nav a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color .2s, transform .2s;
+  }
+
+  nav a:hover { color: var(--orange); transform: translateY(-2px); }
+  nav a.active { color: var(--orange); }
+
+  /* HERO */
+  .hero {
+    padding-top: 130px;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 60px;
+  }
+
+  .hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 44px;
+    color: var(--dark);
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 14px;
+  }
+
+  /* TEAM GRID BARU */
+  .team-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 6% 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+  }
+
+  /* Animasi background gradient */
+  .team-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, #ffe3cd, #fff5e6, #ffd9b3);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: gradientMove 15s ease infinite;
+    border-radius: 16px;
+    opacity: 0.3;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .team-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .member {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 250px;
+    height: 300px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    background: var(--white);
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+
+  .member img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform .6s ease;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent 70%);
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+
+  .info {
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    transform: translateY(25px);
+    opacity: 0;
+    transition: all .5s ease;
+  }
+
+  .info h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .info p { font-size: 13px; color: #ffe3cd; }
+  
+  /* Social media dan fun fact */
+  .socials { display: flex; justify-content: center; gap: 8px; margin-top: 6px; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; }
+  .socials a { font-size: 12px; color: #fff; background: var(--orange); padding: 4px 6px; border-radius: 6px; text-decoration: none; transition: background .2s; }
+  .socials a:hover { background: var(--orange-light); }
+  .fun-fact { display: block; font-size: 12px; margin-top: 4px; opacity: 0; transform: translateY(8px); transition: all 0.4s ease; }
+
+  /* Hover efek member */
+  .member:hover img { transform: scale(1.15) rotate(1deg); filter: brightness(1.05); }
+  .member:hover .overlay { opacity: 1; }
+  .member:hover .info, .member:hover .socials, .member:hover .fun-fact { opacity: 1; transform: translateY(0); }
+  .member:hover { transform: translateY(-15px) scale(1.05); box-shadow: 0 20px 60px rgba(242,114,2,0.3); }
+
+  /* Scroll fade */
+  .fade-in { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(.25,.8,.25,1); }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 26px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) { .hero h1 { font-size: 30px; } }
+</style>
+</head>
+
+<body>
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <img src="img/LOGO_SERBA_SERBI_NASI_BU_HENNY-01-removebg-preview.png" alt="Logo">
+      <h3>Serba Serbi Nasi Bu Henny</h3>
+    </div>
+    <nav>
+      <a href="Beranda.html">Beranda</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="menu.html">Menu</a>
+      <a href="staf.html" class="active">Staf</a>
+      <a href="lokasi.html">Lokasi</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero fade-in">
+  <h1>Tim di Balik Dapur Kami</h1>
+  <p>Dedikasi, kehangatan, dan cinta pada masakan adalah rahasia di balik setiap piring nasi yang tersaji.  
+  Kenali para sosok hebat yang memastikan setiap rasa tetap autentik.</p>
+</section>
+
+<section class="team-section">
+  <!-- Baris 1: Owner -->
+  <div class="team-row fade-in">
+    <div class="member">
+      <img src="img/owner.jpeg" alt="Owner">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Galuh Pauline</h3>
+        <p>Owner & Pendiri</p>
+        <div class="socials">
+          <a href="#" target="_blank">IG</a>
+          <a href="#" target="_blank">LinkedIn</a>
+        </div>
+        <span class="fun-fact">Hobi: Memasak Nasi Liwet</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Baris 2: Manager -->
+  <div class="team-row fade-in">
+    <div class="member">
+      <img src="img/manager.jpeg" alt="Manager">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Pajri Muhammad</h3>
+        <p>Manager Resto</p>
+        <div class="socials">
+          <a href="#">IG</a>
+          <a href="#">LinkedIn</a>
+        </div>
+        <span class="fun-fact">Fun Fact: Kolektor Gelas Unik</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Baris 3: Kepala Koki & Barista -->
+  <div class="team-row fade-in">
+    <div class="member">
+      <img src="img/kepala_koki.jpeg" alt="Kepala Koki">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Dicky Kamiludin</h3>
+        <p>Kepala Koki</p>
+        <div class="socials">
+          <a href="#">IG</a>
+          <a href="#">LinkedIn</a>
+        </div>
+        <span class="fun-fact">Favorit Masakan: Nasi Liwet</span>
+      </div>
+    </div>
+
+    <div class="member">
+      <img src="img/Barista.jpeg" alt="Barista">
+      <div class="overlay"></div>
+      <div class="info">
+        <h3>Rose Serafina</h3>
+        <p>Barista</p>
+        <div class="socials">
+          <a href="#">IG</a>
+          <a href="#">LinkedIn</a>
+        </div>
+        <span class="fun-fact">Minuman Favorit: Kopi Latte</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Serba Serbi Nasi Bu Henny — Dikelola oleh tim hebat yang memasak dengan cinta.
+</footer>
+
+<script>
+  // Fade-in saat scroll
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.2});
+  fadeEls.forEach(el => obs.observe(el));
+
+  // Klik fun fact untuk pop-up
+  document.querySelectorAll('.fun-fact').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      alert(el.textContent);
+    });
+  });
+</script>
+</body>
+</html>
