@@ -130,6 +130,62 @@
   .page-cta .left p{color:var(--muted)}
   .page-cta .right{display:flex;gap:14px;align-items:center}
 
+/* === DELIVERY SECTION === */
+.delivery-info {
+    padding: 70px 20px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.delivery-info h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #f27202;
+    margin-bottom: 40px;
+}
+
+.delivery-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.logo-box.static {
+    width: 170px;
+    background: #fff7f0;
+    border: 3px solid #f27202;
+    border-radius: 18px;
+    padding: 20px 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.4s ease;
+}
+
+/* hover lebih lembut */
+.logo-box.static:hover {
+    transform: translateY(-8px) scale(1.04);
+    background: #ffe5d1;
+    box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+}
+
+.logo-box.static img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+/* text nama resto */
+.resto-name {
+    margin: 0;
+    font-weight: 600;
+    color: #f27202;
+    font-size: 15px;
+}
+
+
+
   /* responsive */
   @media(max-width:1000px){
     .hero{flex-direction:column;padding:120px 5% 40px}
@@ -161,10 +217,10 @@
     </div>
 
     <nav aria-label="Main Navigation">
-      <a href="beranda.html">Beranda</a>
+      <a href="Beranda.html">Beranda</a>
       <a href="tentang.html" class="active">Tentang</a>
       <a href="menu.html">Menu</a>
-      <a href="staff.html">Staf</a>
+      <a href="staf.html">Staf</a>
       <a href="lokasi.html">Lokasi</a>
     </nav>
   </div>
@@ -176,7 +232,7 @@
     <div class="hero-left">
       <div class="eyebrow">Rumah Makan Khas Sunda</div>
       <h1 class="title">Kenikmatan Rumahan — <span style="color:var(--dark)">Setiap Suapan</span></h1>
-      <p class="lead">Warung Nasi Serba Serbi Bu Henny hadir membawa resep turun-temurun, bahan pilihan, dan rasa yang membuat rindu. Berdiri sejak <strong>2024</strong>, kami percaya setiap hidangan harus terasa hangat seperti pelukan.</p>
+      <p class="lead">Warung Nasi Serba Serbi Bu Henny hadir membawa warisan cita rasa turun-temurun, diolah dari bahan pilihan yang dijaga mutunya. Resto ini berdiri sejak <strong>2024</strong>, kami memegang prinsip bahwa setiap hidangan bukan sekadar makanan—melainkan kehangatan yang ingin kami bagi dalam setiap suapan.</p>
 
       <!-- Typing / narrative area -->
       <div class="type-line" id="typeLine" aria-live="polite"></div>
@@ -200,6 +256,32 @@
       </div>
 
   </section>
+
+<section class="delivery-info">
+    <h2>Kini Kami Hadir di Platform Delivery Favorit Anda</h2>
+
+    <div class="delivery-logos">
+
+        <div class="logo-box static">
+            <img src="img/logo_goFood.png" alt="GoFood">
+            <p class="resto-name">Serba Serbi Nasi Bu Henny</p>
+        </div>
+
+        <div class="logo-box static">
+            <img src="img/logo-shopeeFood.png" alt="ShopeeFood">
+            <p class="resto-name">Serba Serbi Nasi Bu Henny</p>
+        </div>
+
+        <div class="logo-box static">
+            <img src="img/logo-grabFood.png" alt="GrabFood">
+            <p class="resto-name">Serba Serbi Nasi Bu Henny</p>
+        </div>
+
+    </div>
+</section>
+
+
+
 
   <!-- stage area switches between narrative and reviews -->
   <section class="stage" id="stage">
@@ -301,9 +383,9 @@ function typeLoop(){
 }
 typeLoop();
 
-/* -------------------------
-  Count-up animation for porsi terjual
---------------------------*/
+
+ // Count-up animation for porsi terjual
+
 function countUp(el, end, duration=1800){
   let start = 0;
   const range = end - start;
@@ -376,6 +458,8 @@ stageInner.addEventListener('mouseleave', ()=>{ resetAuto(); });
 /* Optional CTA button handlers */
 document.getElementById('ctaMenu').addEventListener('click', ()=>{ alert("Arahkan ke menu (implementasi selanjutnya)."); });
 document.getElementById('ctaOrder').addEventListener('click', ()=>{ alert("Arahkan ke pemesanan (implementasi selanjutnya)."); });
+
+
 
 </script>
 </body>
