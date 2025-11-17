@@ -241,7 +241,7 @@
 
   /* Review section: auto transition block */
   .stage{
-    position:relative;
+    position: relative; overflow: hidden;
     margin-top:36px;overflow:hidden;
     border-radius:18px;background:#fff;
     padding:28px 20px;
@@ -350,7 +350,6 @@
   z-index: 5;
   width: 42px;
   height: 42px;
-  border-radius: 50%;
   border: 0;
   background: white;
   color: var(--orange);
@@ -358,6 +357,7 @@
   font-weight: bold;
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   cursor: pointer;
+  z-index: 10;
   transition: 0.25s ease;
 }
 
@@ -367,8 +367,12 @@
   transform: translateY(-50%) scale(1.08);
 }
 
-.arrow.prev { left: 10px; }
-.arrow.next { right: 10px; }
+.arrow.prev { 
+  left: -7px; 
+}
+.arrow.next { 
+  right: -7px;
+}
 
 
 
@@ -509,6 +513,36 @@
         <p>"Selalu puas. Pedasnya pas dan lauknya selalu fresh."</p>
         <div class="review-meta"> <div style="font-size:13px;color:var(--muted)">Dipesan • 10 Juli 2025</div></div>
       </div>
+
+      <div class="review-card">
+      <h4>GoFood — Sari</h4>
+      <p>"Menu lengkap dan porsinya besar, cocok untuk makan siang cepat. Rasanya konsisten enak."</p>
+      <div class="review-meta"><div style="font-size:13px;color:var(--muted)">Dipesan via GoFood • 12 Juli 2025</div></div>
+      </div>
+
+      <div class="review-card">
+      <h4>ShopeeFood — Andi</h4>
+      <p>"Makanan datang tepat waktu, hangat, dan lauknya selalu fresh. Favorit saya setiap minggu!"</p>
+      <div class="review-meta"><div style="font-size:13px;color:var(--muted)">Dipesan via ShopeeFood • 15 Juli 2025</div></div>
+      </div>
+
+      <div class="review-card">
+      <h4>GrabFood — Rina</h4>
+      <p>"Rasa seperti masakan rumahan, sambalnya mantap, dan kemasannya rapi. Recommended banget."</p>
+      <div class="review-meta"><div style="font-size:13px;color:var(--muted)">Dipesan via GrabFood • 18 Juli 2025</div></div>
+      </div>
+
+      <div class="review-card">
+      <h4>GoFood — Tono</h4>
+      <p>"Selalu puas dengan kualitas makanannya. Nasi pulen dan lauk fresh. Layanan delivery cepat."</p>
+      <div class="review-meta"><div style="font-size:13px;color:var(--muted)">Dipesan via GoFood • 20 Juli 2025</div></div>
+      </div>
+
+      <div class="review-card">
+      <h4>ShopeeFood — Maya</h4>
+      <p>"Harga terjangkau, rasa mantap, dan porsinya pas. Cocok untuk keluarga atau sendiri."</p>
+      <div class="review-meta"><div style="font-size:13px;color:var(--muted)">Dipesan via ShopeeFood • 22 Juli 2025</div></div>
+      </div>
     </div>
   </section>
 
@@ -641,9 +675,6 @@ function goTo(i){
   dots.forEach(d=>d.classList.remove('active'));
   dots[i].classList.add('active');
 }
-
-function startAuto(){ autoTimer = setInterval(autoSlide, 4200); }
-function resetAuto(){ clearInterval(autoTimer); startAuto(); }
 
 // Tombol panah
 document.getElementById('prevBtn').addEventListener('click', () => {
