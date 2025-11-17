@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu Makanan Dinamis</title>
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
@@ -15,270 +16,395 @@
       }
 
       body {
-        background-color: #ffffff;
+        background: #ffffff;
         overflow-x: hidden;
       }
 
-      /* ====================== SHAPE LATAR ====================== */
-      .background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: -1;
-      }
-
+      /* BACKGROUND */
       .bg-shape {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: -1;
         background: linear-gradient(120deg, #f6f1e7 40%, #ffffff 100%);
-        clip-path: path(
-          "M0,0 C0,300 400,500 800,450 C1200,400 1400,300 1600,500 L1600,0 Z"
-        );
+        z-index: -1;
       }
 
-      /* ====================== HEADER ====================== */
+      /* HEADER layout: left - center - right */
       header {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        justify-content: space-between;
-        padding: 1rem 2rem;
-        background: transparent;
-        position: relative;
-        z-index: 10;
+        gap: 10px;
+        padding: 1.3rem 3rem;
       }
 
       .logo-area {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 10px;
       }
 
       .logo {
-        height: 60px;
         width: 60px;
+        height: 60px;
         border-radius: 50%;
-        background: #fff;
         padding: 5px;
-        box-shadow: 0 0 20px rgba(255, 166, 0, 0.6),
-          0 0 40px rgba(255, 166, 0, 0.3);
+        background: #fff;
+        box-shadow: 0 0 20px rgba(255, 166, 0, 0.5);
       }
 
-      .brand-text {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #f27202;
-        transition: color 0.5s ease;
-        line-height: 1.3;
+      /* NAV DI TENGAH */
+      nav {
+        justify-self: center;
       }
 
       nav ul {
-        list-style: none;
         display: flex;
         gap: 40px;
+        list-style: none;
       }
 
       nav ul li a {
         text-decoration: none;
+        font-weight: bold;
         color: #333;
-        font-weight: 500;
-        transition: color 0.3s;
       }
 
-      nav ul li a:hover {
-        color: #f27202;
+      /* HAMBURGER di kanan */
+      .right-header {
+        justify-self: end;
+        display: flex;
+        align-items: center;
       }
 
-      /* ====================== HAMBURGER ====================== */
       .hamburger {
-        background: none;
-        border: 2px solid #f27202;
-        border-radius: 8px;
-        padding: 8px 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         cursor: pointer;
-        font-size: 16px;
         font-weight: 600;
-        color: #f27202;
-        transition: 0.3s;
+        font-size: 15px;
+        background: transparent;
+        border: none;
       }
 
-      .hamburger:hover {
-        background: #f27202;
-        color: white;
+      .ham-icon {
+        width: 28px;
+        height: 3px;
+        background: #333;
+        position: relative;
+        border-radius: 2px;
+      }
+      .ham-icon::before,
+      .ham-icon::after {
+        content: "";
+        width: 28px;
+        height: 3px;
+        background: #333;
+        position: absolute;
+        left: 0;
+        border-radius: 2px;
+      }
+      .ham-icon::before {
+        top: -8px;
+      }
+      .ham-icon::after {
+        top: 8px;
       }
 
-      /* ====================== SLIDE MENU ====================== */
-      .category-menu {
+      /* SLIDE MENU (kanan) */
+      .side-menu {
         position: fixed;
         top: 0;
         right: -300px;
         width: 300px;
         height: 100%;
-        background: #f27202;
-        color: white;
-        padding: 40px 20px;
-        transition: right 0.5s ease;
-        z-index: 20;
+        background: #f27202; /* orange background */
+        box-shadow: -8px 0 30px rgba(0, 0, 0, 0.15);
+        transition: right 0.38s cubic-bezier(0.2, 0.9, 0.2, 1);
+        padding: 22px;
+        z-index: 1200;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
       }
 
-      .category-menu.active {
+      .side-menu.active {
         right: 0;
       }
 
-      .category-menu h3 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      .category-menu ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      .category-menu li {
-        margin: 15px 0;
-        font-size: 18px;
-        cursor: pointer;
-        transition: transform 0.3s;
-      }
-
-      .category-menu li:hover {
-        transform: translateX(8px);
-      }
-
-      .close-btn {
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        background: none;
+      .side-menu .close-btn {
+        background: transparent;
         border: none;
-        font-size: 26px;
-        color: white;
+        color: #fff;
+        font-size: 30px;
+        align-self: flex-end;
         cursor: pointer;
       }
 
-      /* ====================== KONTEN ====================== */
-      .content {
+      .side-menu h3 {
+        margin: 6px 0 14px 0;
+        font-size: 20px;
+      }
+
+      .side-menu ul {
+        list-style: none;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 8px;
+      }
+
+      .side-menu ul li {
+        font-size: 17px;
+        cursor: pointer;
+        padding: 8px 6px;
+        border-radius: 6px;
+      }
+      .side-menu ul li:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      /* overlay ketika menu aktif */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+        z-index: 1100;
+      }
+      .overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* KONTEN UTAMA */
+      .container {
+        display: flex;
+        padding: 50px 80px;
         justify-content: space-between;
-        padding: 60px 80px;
-        flex-wrap: wrap;
       }
 
-      .text-section {
+      /* TEXT KIRI */
+      .left {
         width: 40%;
-        min-width: 300px;
+        padding-top: 60px;
       }
 
-      .text-section h2 {
-        color: #f27202;
-        font-size: 28px;
+      .title {
+        font-size: 40px;
+        font-weight: 700;
         margin-bottom: 10px;
       }
 
-      .text-section h1 {
-        font-size: 40px;
-        font-weight: 700;
-        margin-bottom: 20px;
+      .rating {
+        color: gold;
+        font-size: 20px;
+        margin-bottom: 10px;
       }
 
-      .text-section p {
+      .price {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #f27202;
+      }
+
+      .desc {
         margin-bottom: 25px;
         line-height: 1.5;
       }
 
-      .add-btn {
+      /* Add to cart */
+      .cart-control {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .qty-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+      }
+
+      .qty-btn {
         background: #f27202;
-        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 6px;
         color: white;
-        padding: 14px 32px;
-        font-weight: 600;
-        border-radius: 8px;
+        border: none;
+        font-size: 20px;
         cursor: pointer;
-        transition: all 0.3s;
+        font-weight: bold;
       }
 
-      .add-btn:hover {
-        background: #d86100;
+      .add-cart {
+        background: #f27202;
+        padding: 12px 25px;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
       }
 
-      /* ====================== FOTO MENU ====================== */
-      .image-section {
+      /* GAMBAR BESAR */
+      .center {
         position: relative;
-        width: 500px;
-        height: 500px;
+        width: 380px;
+      }
+
+      .main-img {
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: 0.45s ease;
+        box-shadow: 0 0 25px rgba(242, 114, 2, 0.5);
+      }
+
+      /* FOTO KECIL DI KANAN */
+      .right {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .thumbs {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .small-box {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-
-      .food-img {
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 0 25px rgba(242, 114, 2, 0.5);
-        transition: transform 1s ease, opacity 1s ease;
-      }
-
-      .slide-out {
-        transform: translateY(100px) rotate(90deg);
-        opacity: 0;
-      }
-
-      .slide-in {
-        transform: translateY(-100px) rotate(-90deg);
-        opacity: 0;
-      }
-
-      .active-img {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-
-      /* ====================== PANAH ====================== */
-      .controls {
-        position: absolute;
-        bottom: 10px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .arrow {
-        background: white;
-        border: none;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
         cursor: pointer;
-        font-size: 20px;
-        transition: 0.3s;
+        border: 3px solid transparent;
+        transition: 0.22s ease;
+        background: #fff;
       }
 
-      .arrow:hover {
-        background: #f27202;
+      .small-box:hover {
+        transform: translateY(-4px);
+      }
+
+      .small-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .small-box.active {
+        border-color: #f27202;
+      }
+
+      /* BUTTON NEXT/PREV: pill horizontal, stacked vertically, orange border */
+      .scroll-btns {
+        display: flex;
+        flex-direction: column;
+        margin-top: 6px;
+        gap: 10px;
+        user-select: none;
+        align-items: center;
+      }
+
+      .arrow-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px; /* horizontal pill */
+        height: 36px;
+        border-radius: 999px;
+        border: 2px solid #f27202;
+        background: transparent;
+        color: #f27202;
+        font-size: 22px;
+        cursor: pointer;
+        transition: 0.18s;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+      }
+      .arrow-pill:hover {
+        transform: translateY(-3px);
+        background: rgba(242, 114, 2, 0.06);
+      }
+
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #111;
         color: white;
+        text-align: center;
+        padding: 12px;
+      }
+
+      /* responsive small screens minor tweaks */
+      @media (max-width: 900px) {
+        .container {
+          padding: 30px 20px;
+          flex-direction: column;
+          gap: 30px;
+          align-items: center;
+        }
+        .left {
+          width: 100%;
+          text-align: center;
+        }
+        .center {
+          order: -1;
+        }
+        .right {
+          flex-direction: row;
+        }
+        .thumbs {
+          flex-direction: row;
+        }
       }
     </style>
   </head>
+
   <body>
-    <!-- Background Shape -->
     <div class="bg-shape"></div>
 
-    <!-- Header -->
+    <!-- Overlay (click outside to close menu) -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- SLIDE MENU KATEGORI -->
+    <aside class="side-menu" id="sideMenu" aria-hidden="true">
+      <button class="close-btn" id="closeMenu">&times;</button>
+      <h3>Menu Kategori</h3>
+      <ul id="kategoriList">
+        <li data-cat="main">Hidangan Utama</li>
+        <li data-cat="cemilan">Cemilan</li>
+        <li data-cat="minuman">Minuman</li>
+      </ul>
+    </aside>
+
+    <!-- HEADER -->
     <header>
       <div class="logo-area">
-        <img src="img/logo.png" alt="Logo" class="logo" />
-        <span class="brand-text">Warung Nasi<br />Serba Serbi</span>
+        <img src="img/logo.png" class="logo" alt="logo" />
+        <h3 style="line-height: 1">Warung Nasi<br />Serba Serbi</h3>
       </div>
+
       <nav>
         <ul>
           <li><a href="Beranda.html">Beranda</a></li>
@@ -288,190 +414,327 @@
           <li><a href="lokasi.html">Lokasi</a></li>
         </ul>
       </nav>
-      <button class="hamburger" id="hamburgerBtn">☰ Kategori Manu</button>
+
+      <div class="right-header">
+        <button class="hamburger" id="hamBtn" aria-expanded="false">
+          <span class="ham-icon" aria-hidden="true"></span>
+          <span style="color: #333">Menu Kategori</span>
+        </button>
+      </div>
     </header>
 
-    <!-- Slide Menu -->
-    <div class="category-menu" id="categoryMenu">
-      <button class="close-btn" id="closeMenu">&times;</button>
-      <h3>Kategori Menu</h3>
-      <ul>
-        <li data-category="lauk">🍗 Lauk Pauk</li>
-        <li data-category="minum">🥤 Minuman</li>
-        <li data-category="cemilan">🍟 Cemilan</li>
-      </ul>
-    </div>
+    <!-- ======================== MAIN CONTENT ======================== -->
+    <div class="container">
+      <!-- KIRI -->
+      <div class="left">
+        <h1 class="title" id="title">Ayam Geprek Pedas</h1>
 
-    <!-- Konten -->
-    <section class="content">
-      <div class="text-section" id="text-section">
-        <h2 id="price">$32</h2>
-        <h1 id="title">Green Goddess Chicken Salad</h1>
-        <p id="desc">
-          Salad ayam segar dengan dressing hijau lembut dan sayuran organik.
-        </p>
-        <button class="add-btn">Add to Cart</button>
-      </div>
+        <div class="rating">⭐⭐⭐⭐⭐ 4.8</div>
 
-      <div class="image-section">
-        <img src="img/makanan1.png" class="food-img active-img" id="foodImg" />
-        <div class="controls">
-          <button class="arrow" id="prev">⬇</button>
-          <button class="arrow" id="next">⬇</button>
+        <div class="price" id="price">$25</div>
+
+        <p class="desc" id="desc">Ayam goreng sambal bawang pedas gurih.</p>
+
+        <!-- Add to cart -->
+        <div class="cart-control">
+          <div class="qty-box">
+            <button class="qty-btn" id="minus">-</button>
+            <span id="qty">0</span>
+            <button class="qty-btn" id="plus">+</button>
+          </div>
+
+          <button class="add-cart">Add to Cart</button>
         </div>
       </div>
-    </section>
 
+      <!-- TENGAH -->
+      <div class="center">
+        <img
+          id="mainImg"
+          class="main-img"
+          src="img/makanan1.png"
+          alt="makanan"
+        />
+      </div>
+
+      <!-- KANAN: FOTO KECIL + tombol vertical di bawah -->
+      <div class="right" id="rightCol">
+        <div class="thumbs" id="thumbBox">
+          <!-- thumbnails generated by JS -->
+        </div>
+
+        <div class="scroll-btns">
+          <button class="arrow-pill" id="prevBtn" title="Sebelumnya">🔼</button>
+          <button class="arrow-pill" id="nextBtn" title="Berikutnya">🔽</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>© 2025 TokoMakan. Dikembangkan oleh Pajri Muhamad.</footer>
+
+    <!-- ======================== SCRIPT ======================== -->
     <script>
-      const data = {
-        lauk: [
-          {
-            src: "img/makanan1.png",
-            title: "Ayam Geprek Pedas",
-            price: "$25",
-            desc: "Ayam goreng sambal bawang pedas gurih.",
-          },
-          {
-            src: "img/makanan2.png",
-            title: "Ikan Bakar Madu",
-            price: "$28",
-            desc: "Ikan segar dibakar dengan olesan madu.",
-          },
-          {
-            src: "img/makanan3.png",
-            title: "Rendang Daging",
-            price: "$30",
-            desc: "Rendang daging sapi khas Padang yang kaya rempah.",
-          },
-          {
-            src: "img/makanan4.png",
-            title: "Rendang Daging",
-            price: "$30",
-            desc: "Rendang daging sapi khas Padang yang kaya rempah.",
-          },
-          {
-            src: "img/makanan5.png",
-            title: "Rendang Daging",
-            price: "$30",
-            desc: "Rendang daging sapi khas Padang yang kaya rempah.",
-          },
-          {
-            src: "img/makanan6.png",
-            title: "Rendang Daging",
-            price: "$30",
-            desc: "Rendang daging sapi khas Padang yang kaya rempah.",
-          },
-        ],
-        minum: [
-          {
-            src: "img/makanan4.jpg",
-            title: "Es Jeruk Segar",
-            price: "$15",
-            desc: "Minuman jeruk alami, segar dan sehat.",
-          },
-          {
-            src: "img/makanan5.jpg",
-            title: "Jus Alpukat",
-            price: "$18",
-            desc: "Jus alpukat kental dengan topping coklat.",
-          },
-          {
-            src: "img/makanan6.jpg",
-            title: "Teh Manis Dingin",
-            price: "$10",
-            desc: "Teh manis khas rumah makan, disajikan dingin.",
-          },
-        ],
-        cemilan: [
-          {
-            src: "img/makanan7.jpg",
-            title: "Pisang Goreng",
-            price: "$12",
-            desc: "Pisang goreng renyah manis disajikan hangat.",
-          },
-          {
-            src: "img/makanan8.jpg",
-            title: "Tahu Crispy",
-            price: "$14",
-            desc: "Tahu goreng crispy dengan saus pedas manis.",
-          },
-          {
-            src: "img/makanan9.jpg",
-            title: "Tempe Mendoan",
-            price: "$13",
-            desc: "Tempe mendoan hangat dengan sambal kecap.",
-          },
-        ],
-      };
+      const itemsMain = [
+        {
+          src: "img/makanan1.png",
+          title: "Ayam Geprek Pedas",
+          price: "$25",
+          desc: "Ayam goreng sambal bawang pedas gurih.",
+        },
+        {
+          src: "img/makanan2.png",
+          title: "Ikan Bakar Madu",
+          price: "$28",
+          desc: "Ikan segar dibakar dengan olesan madu.",
+        },
+        {
+          src: "img/makanan3.png",
+          title: "Rendang Daging",
+          price: "$30",
+          desc: "Rendang daging sapi Padang kaya rempah.",
+        },
+        {
+          src: "img/makanan4.png",
+          title: "Ayam Geprek Pedas",
+          price: "$25",
+          desc: "Ayam goreng sambal bawang pedas gurih.",
+        },
+        {
+          src: "img/makanan5.png",
+          title: "Ikan Bakar Madu",
+          price: "$28",
+          desc: "Ikan segar dibakar dengan olesan madu.",
+        },
+        {
+          src: "img/makanan6.png",
+          title: "Rendang Daging",
+          price: "$30",
+          desc: "Rendang daging sapi Padang kaya rempah.",
+        },
+      ];
 
-      let currentCategory = "lauk";
+      const itemsCemilan = [
+        {
+          src: "img/cemilan1.png",
+          title: "Pisang Goreng",
+          price: "$12",
+          desc: "Pisang goreng renyah manis disajikan hangat.",
+        },
+        {
+          src: "img/cemilan2.png",
+          title: "Tahu Crispy",
+          price: "$14",
+          desc: "Tahu goreng crispy dengan saus pedas manis.",
+        },
+        {
+          src: "img/cemilan3.png",
+          title: "Tempe Mendoan",
+          price: "$13",
+          desc: "Tempe mendoan hangat dengan sambal kecap.",
+        },
+        {
+          src: "img/cemilan4.png",
+          title: "Kue Lapis",
+          price: "$11",
+          desc: "Kue lapis lembut tradisional.",
+        },
+        {
+          src: "img/cemilan5.png",
+          title: "Donat Mini",
+          price: "$10",
+          desc: "Donat mini manis tabur gula.",
+        },
+      ];
+
+      const itemsMinuman = [
+        {
+          src: "img/minuman1.png",
+          title: "Es Jeruk Segar",
+          price: "$15",
+          desc: "Minuman jeruk alami, segar dan sehat.",
+        },
+        {
+          src: "img/minuman2.png",
+          title: "Jus Alpukat",
+          price: "$18",
+          desc: "Jus alpukat kental dengan topping coklat.",
+        },
+        {
+          src: "img/minuman3.png",
+          title: "Teh Manis Dingin",
+          price: "$10",
+          desc: "Teh manis khas rumah makan, disajikan dingin.",
+        },
+        {
+          src: "img/minuman4.png",
+          title: "Kopi Tubruk",
+          price: "$12",
+          desc: "Kopi hitam asli aroma kuat.",
+        },
+        {
+          src: "img/minuman5.png",
+          title: "Milkshake Coklat",
+          price: "$20",
+          desc: "Milkshake coklat lembut dan kental.",
+        },
+      ];
+
+      // initial category
+      let currentCategory = "main";
+      let currentItems = itemsMain;
       let index = 0;
 
-      const foodImg = document.getElementById("foodImg");
+      // elements
+      const mainImg = document.getElementById("mainImg");
       const titleEl = document.getElementById("title");
       const priceEl = document.getElementById("price");
       const descEl = document.getElementById("desc");
+      const thumbBox = document.getElementById("thumbBox");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
 
-      function animateChange(newSrc) {
-        foodImg.classList.remove("active-img");
-        foodImg.classList.add("slide-out");
+      // overlay & menu
+      const overlay = document.getElementById("overlay");
+      const hamBtn = document.getElementById("hamBtn");
+      const sideMenu = document.getElementById("sideMenu");
+      const closeMenu = document.getElementById("closeMenu");
+      const kategoriList = document.getElementById("kategoriList");
 
-        setTimeout(() => {
-          foodImg.src = newSrc;
-          foodImg.classList.remove("slide-out");
-          foodImg.classList.add("slide-in");
+      function renderThumbnails() {
+        thumbBox.innerHTML = "";
 
-          setTimeout(() => {
-            foodImg.classList.remove("slide-in");
-            foodImg.classList.add("active-img");
-          }, 1000);
-        }, 800);
+        const showCount = 3;
+        const loopCount = Math.min(showCount, currentItems.length);
+
+        for (let i = 0; i < loopCount; i++) {
+          const item = currentItems[i];
+          const div = document.createElement("div");
+          div.className = "small-box" + (i === index ? " active" : "");
+          div.dataset.id = i;
+          div.innerHTML = `<img src="${item.src}" class="small-img" alt="${item.title}"/>`;
+          div.addEventListener("click", () => {
+            index = Number(div.dataset.id);
+            updateDisplay();
+          });
+          thumbBox.appendChild(div);
+        }
       }
 
       function updateDisplay() {
-        const item = data[currentCategory][index];
-        animateChange(item.src);
-        titleEl.textContent = item.title;
-        priceEl.textContent = item.price;
-        descEl.textContent = item.desc;
+        // clamp index
+        if (index < 0) index = 0;
+        if (index >= currentItems.length) index = 0;
+
+        const it = currentItems[index];
+        // image transition
+        mainImg.style.opacity = 0;
+        setTimeout(() => {
+          mainImg.src = it.src;
+          titleEl.textContent = it.title;
+          priceEl.textContent = it.price;
+          descEl.textContent = it.desc;
+          mainImg.style.opacity = 1;
+
+          document
+            .querySelectorAll(".small-box")
+            .forEach((el) => el.classList.remove("active"));
+          const shown = document.querySelector(
+            `.small-box[data-id="${index}"]`
+          );
+          if (shown) shown.classList.add("active");
+        }, 180);
       }
 
-      document.getElementById("next").addEventListener("click", () => {
-        index = (index + 1) % data[currentCategory].length;
+      // initial render
+      function setCategory(cat) {
+        currentCategory = cat;
+        if (cat === "main") currentItems = itemsMain;
+        else if (cat === "cemilan") currentItems = itemsCemilan;
+        else if (cat === "minuman") currentItems = itemsMinuman;
+        index = 0;
+        renderThumbnails();
+        updateDisplay();
+      }
+
+      setCategory("main");
+
+      // next / prev
+      prevBtn.addEventListener("click", () => {
+        index = (index - 1 + currentItems.length) % currentItems.length;
+        updateDisplay();
+      });
+      nextBtn.addEventListener("click", () => {
+        index = (index + 1) % currentItems.length;
         updateDisplay();
       });
 
-      document.getElementById("prev").addEventListener("click", () => {
-        index =
-          (index - 1 + data[currentCategory].length) %
-          data[currentCategory].length;
-        updateDisplay();
+      /* qty buttons */
+      let qty = 0;
+      document.getElementById("minus").onclick = () => {
+        qty = Math.max(0, qty - 1);
+        document.getElementById("qty").textContent = qty;
+      };
+      document.getElementById("plus").onclick = () => {
+        qty++;
+        document.getElementById("qty").textContent = qty;
+      };
+
+      function openMenu() {
+        sideMenu.classList.add("active");
+        overlay.classList.add("active");
+        hamBtn.setAttribute("aria-expanded", "true");
+        sideMenu.setAttribute("aria-hidden", "false");
+      }
+      function closeMenuFunc() {
+        sideMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        hamBtn.setAttribute("aria-expanded", "false");
+        sideMenu.setAttribute("aria-hidden", "true");
+      }
+
+      hamBtn.addEventListener("click", (e) => {
+        // toggle
+        if (sideMenu.classList.contains("active")) closeMenuFunc();
+        else openMenu();
       });
 
-      // Slide Menu Toggle
-      const menuBtn = document.getElementById("hamburgerBtn");
-      const catMenu = document.getElementById("categoryMenu");
-      const closeMenu = document.getElementById("closeMenu");
+      closeMenu.addEventListener("click", closeMenuFunc);
 
-      menuBtn.addEventListener("click", () => {
-        catMenu.classList.add("active");
+      // click outside to close: clicking overlay closes
+      overlay.addEventListener("click", closeMenuFunc);
+
+      // also close on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && sideMenu.classList.contains("active"))
+          closeMenuFunc();
       });
 
-      closeMenu.addEventListener("click", () => {
-        catMenu.classList.remove("active");
-      });
-
-      // Kategori Klik
-      document.querySelectorAll(".category-menu li").forEach((li) => {
+      // kategori clicks
+      kategoriList.querySelectorAll("li").forEach((li) => {
         li.addEventListener("click", () => {
-          currentCategory = li.dataset.category;
-          index = 0;
-          updateDisplay();
-          catMenu.classList.remove("active");
+          const cat = li.dataset.cat;
+          setCategory(cat);
+          closeMenuFunc();
         });
       });
 
-      updateDisplay();
+      document.addEventListener("click", (e) => {
+        if (!sideMenu.classList.contains("active")) return;
+        const target = e.target;
+        const inMenu = sideMenu.contains(target);
+        const isHam = hamBtn.contains(target);
+        if (!inMenu && !isHam) {
+          closeMenuFunc();
+        }
+      });
+
+      // Accessibility: when sideMenu opens, focus first clickable item
+      sideMenu.addEventListener("transitionend", () => {
+        if (sideMenu.classList.contains("active")) {
+          const firstLi = sideMenu.querySelector("ul li");
+          firstLi && firstLi.focus && firstLi.focus();
+        }
+      });
     </script>
   </body>
 </html>
