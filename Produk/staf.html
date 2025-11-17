@@ -24,66 +24,95 @@
     overflow-x: hidden;
   }
 
-  /* NAVBAR */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    z-index: 100;
-    padding: 16px 6%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  /* HEADER */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        background: transparent;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        color: inherit;
+      }
 
-  .nav-inner {
-    width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
+      header {
+      transition: transform 0.25s ease;
+      }
 
-  .brand {
-    position: absolute;
-    left: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+      header.hide {
+      transform: translateY(-100%);
+      }
 
-  .brand img {
-    height: 45px;
-    width: auto;
-    border-radius: 8px;
-  }
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
 
-  .brand h3 {
-    font-size: 14px;
-    color: var(--orange);
-    font-weight: 700;
-  }
+      .logo {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: #fff;
+        padding: 5px;
+        box-shadow: 0 0 20px rgba(255, 166, 0, 0.6),
+          0 0 40px rgba(255, 166, 0, 0.3);
+      }
 
-  nav {
-    display: flex;
-    gap: 28px;
-  }
+      .brand-text {
+        font-size: 10x;
+        font-weight: 700;
+        color: inherit;
+        transition: color 0.5s ease;
+      }
 
-  nav a {
-    color: var(--dark);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color .2s, transform .2s;
-  }
+      nav {
+        flex-grow: 1;
+        text-align: center;
+      }
 
-  nav a:hover { color: var(--orange); transform: translateY(-2px); }
-  nav a.active { color: var(--orange); }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: inline-flex;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        justify-content: center;
+        color: inherit;
+      }
+
+      nav ul.nav-white-text {
+        color: white !important;
+      }
+
+      nav ul li {
+        cursor: pointer;
+        font-weight: 600;
+        color: inherit;
+        transition: color 0.3s;
+      }
+
+      nav ul li:hover {
+        color: #f27202;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      body:not(.dark-mode) .signin:hover {
+        color: #fff !important;
+        background-color: #f27202;
+        border-color: #fff !important;
+      }
 
   /* HERO */
   .hero {
-    padding-top: 130px;
+    padding-top:5px;
     text-align: center;
     max-width: 850px;
     margin: 0 auto 60px;
@@ -99,107 +128,92 @@
     color: var(--muted);
     font-size: 18px;
     line-height: 1.8;
-    margin-top: 14px;
   }
 
-  /* TEAM GRID BARU */
-  .team-section {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 6% 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 60px;
-    position: relative;
-  }
+  /* TEAM GRID */
+ .team-section {
+  max-width: 700px;
+  margin: 40px auto 120px;
+  padding: 0 6%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+}
 
-  /* Animasi background gradient */
-  .team-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, #ffe3cd, #fff5e6, #ffd9b3);
-    background-size: 400% 400%;
-    z-index: -1;
-    animation: gradientMove 15s ease infinite;
-    border-radius: 16px;
-    opacity: 0.3;
-  }
+/* CARD HOVER FLOAT */
+.member:hover {
+  transform: translateY(-14px);
+  transition: .4s ease;
+}
 
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+/* FOTO */
+.member .photo {
+  width: 200px;
+  height: 260px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s ease;
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.08),
+    0 0 0 0 rgba(242, 114, 2, 0.4);
+}
 
-  .team-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-  }
+/* HOVER: GLOW ORANGE */
+.member:hover .photo {
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.15),
+    0 0 25px 4px rgba(242, 114, 2, 0.5);
+}
 
-  .member {
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    width: 250px;
-    height: 300px;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
-    background: var(--white);
-    transition: all 0.5s ease;
-    cursor: pointer;
-  }
+/* FOTO ZOOM */
+.member .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .6s ease;
+}
 
-  .member img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    transition: transform .6s ease;
-  }
+.member:hover .photo img {
+  transform: scale(1.14);
+}
 
-  .overlay {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent 70%);
-    opacity: 0;
-    transition: opacity .5s ease;
-  }
+/* GLOSSY OVERLAY */
+.member .photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0));
+  opacity: 0;
+  transition: .4s ease;
+}
 
-  .info {
-    position: absolute;
-    bottom: 18px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    z-index: 2;
-    transform: translateY(25px);
-    opacity: 0;
-    transition: all .5s ease;
-  }
+.member:hover .photo::after {
+  opacity: 1;
+}
 
-  .info h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-  .info p { font-size: 13px; color: #ffe3cd; }
-  
-  /* Social media dan fun fact */
-  .socials { display: flex; justify-content: center; gap: 8px; margin-top: 6px; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; }
-  .socials a { font-size: 12px; color: #fff; background: var(--orange); padding: 4px 6px; border-radius: 6px; text-decoration: none; transition: background .2s; }
-  .socials a:hover { background: var(--orange-light); }
-  .fun-fact { display: block; font-size: 12px; margin-top: 4px; opacity: 0; transform: translateY(8px); transition: all 0.4s ease; }
+/* INFO */
+.info {
+  text-align: center;
+  margin-top: 12px;
+}
 
-  /* Hover efek member */
-  .member:hover img { transform: scale(1.15) rotate(1deg); filter: brightness(1.05); }
-  .member:hover .overlay { opacity: 1; }
-  .member:hover .info, .member:hover .socials, .member:hover .fun-fact { opacity: 1; transform: translateY(0); }
-  .member:hover { transform: translateY(-15px) scale(1.05); box-shadow: 0 20px 60px rgba(242,114,2,0.3); }
+.info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  transition: .3s ease;
+}
 
-  /* Scroll fade */
-  .fade-in { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(.25,.8,.25,1); }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+.member:hover .info h3 {
+  color: var(--orange);
+}
+
+.info p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 15px;
+}
 
   footer {
     background: #111;
@@ -208,27 +222,28 @@
     padding: 26px;
     font-size: 14px;
   }
-
-  @media (max-width: 600px) { .hero h1 { font-size: 30px; } }
 </style>
 </head>
 
 <body>
-<header>
-  <div class="nav-inner">
-    <div class="brand">
-      <img src="img/LOGO_SERBA_SERBI_NASI_BU_HENNY-01-removebg-preview.png" alt="Logo">
-      <h3>Serba Serbi Nasi Bu Henny</h3>
-    </div>
-    <nav>
-      <a href="Beranda.html">Beranda</a>
-      <a href="tentang.html">Tentang</a>
-      <a href="menu.html">Menu</a>
-      <a href="staf.html" class="active">Staf</a>
-      <a href="lokasi.html">Lokasi</a>
-    </nav>
-  </div>
-</header>
+ <header>
+      <div class="logo-area">
+        <img src="img/logo.png" alt="Logo TokoMakan" class="logo" />
+        <span class="brand-text" id="brand-text"
+          >Warung Nasi <br />Serba Serbi</span
+        >
+      </div>
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="Beranda.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="staf.html">Staf</a></li>
+          <li><a href="lokasi.html">Lokasi</a></li>
+        </ul>
+      </nav>
+    </header>
+
 
 <section class="hero fade-in">
   <h1>Tim di Balik Dapur Kami</h1>
@@ -237,70 +252,57 @@
 </section>
 
 <section class="team-section">
-  <!-- Baris 1: Owner -->
-  <div class="team-row fade-in">
-    <div class="member">
-      <img src="img/owner.jpeg" alt="Owner">
-      <div class="overlay"></div>
-      <div class="info">
-        <h3>Galuh Pauline</h3>
-        <p>Owner & Pendiri</p>
-        <div class="socials">
-          <a href="#" target="_blank">IG</a>
-          <a href="#" target="_blank">LinkedIn</a>
-        </div>
-        <span class="fun-fact">Hobi: Memasak Nasi Liwet</span>
-      </div>
-    </div>
+
+  <!-- Owner -->
+  <div class="member">
+  <div class="photo">
+    <img src="img/owner.jpeg" alt="Owner">
   </div>
 
-  <!-- Baris 2: Manager -->
-  <div class="team-row fade-in">
-    <div class="member">
-      <img src="img/manager.jpeg" alt="Manager">
-      <div class="overlay"></div>
-      <div class="info">
-        <h3>Pajri Muhammad</h3>
-        <p>Manager Resto</p>
-        <div class="socials">
-          <a href="#">IG</a>
-          <a href="#">LinkedIn</a>
-        </div>
-        <span class="fun-fact">Fun Fact: Kolektor Gelas Unik</span>
-      </div>
-    </div>
+  <div class="info">
+    <h3>Galuh Pauline</h3>
+    <p>Owner & Pendiri</p>
+  </div>
+</div>
+
+
+  <!-- Manager -->
+  <div class="member">
+  <div class="photo">
+    <img src="img/manager.jpeg" alt="Manager">
   </div>
 
-  <!-- Baris 3: Kepala Koki & Barista -->
-  <div class="team-row fade-in">
-    <div class="member">
-      <img src="img/kepala_koki.jpeg" alt="Kepala Koki">
-      <div class="overlay"></div>
-      <div class="info">
-        <h3>Dicky Kamiludin</h3>
-        <p>Kepala Koki</p>
-        <div class="socials">
-          <a href="#">IG</a>
-          <a href="#">LinkedIn</a>
-        </div>
-        <span class="fun-fact">Favorit Masakan: Nasi Liwet</span>
-      </div>
-    </div>
-
-    <div class="member">
-      <img src="img/Barista.jpeg" alt="Barista">
-      <div class="overlay"></div>
-      <div class="info">
-        <h3>Rose Serafina</h3>
-        <p>Barista</p>
-        <div class="socials">
-          <a href="#">IG</a>
-          <a href="#">LinkedIn</a>
-        </div>
-        <span class="fun-fact">Minuman Favorit: Kopi Latte</span>
-      </div>
-    </div>
+  <div class="info">
+    <h3>Pajri Muhamamd</h3>
+    <p>Manager</p>
   </div>
+</div>
+
+  <!-- Koki & Barista -->
+<div class="member">
+  <div class="photo">
+    <img src="img/kepala_koki.jpeg" alt="Kepala koki">
+  </div>
+
+  <div class="info">
+    <h3>Dicky Kamilludin</h3>
+    <p>Kepala Koki</p>
+  </div>
+</div>
+
+
+<div class="member">
+  <div class="photo">
+    <img src="img/Barista.jpeg" alt="Barista">
+  </div>
+
+  <div class="info">
+    <h3>Serafina Alveric</h3>
+    <p>Barista</p>
+  </div>
+</div>
+
+
 </section>
 
 <footer>
@@ -308,24 +310,9 @@
 </footer>
 
 <script>
-  // Fade-in saat scroll
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, {threshold: 0.2});
-  fadeEls.forEach(el => obs.observe(el));
+ 
 
-  // Klik fun fact untuk pop-up
-  document.querySelectorAll('.fun-fact').forEach(el=>{
-    el.addEventListener('click', ()=>{
-      alert(el.textContent);
-    });
-  });
 </script>
+
 </body>
 </html>
