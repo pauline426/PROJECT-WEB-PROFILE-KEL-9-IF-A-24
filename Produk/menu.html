@@ -3,7 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu Makanan Dinamis</title>
+    <title>Warung Nasi Serba Serbi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
@@ -315,7 +323,7 @@
         border-color: #f27202;
       }
 
-      /* BUTTON NEXT/PREV: pill horizontal, stacked vertically, orange border */
+      /* BUTTON NEXT/PREV */
       .scroll-btns {
         display: flex;
         flex-direction: column;
@@ -323,6 +331,28 @@
         gap: 10px;
         user-select: none;
         align-items: center;
+      }
+
+      .arrow-pill {
+        background: #ffffff;
+        border: 2px solid #ddd;
+        border-radius: 50%;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.25s;
+        font-size: 20px;
+        color: #333;
+      }
+
+      .arrow-pill:hover {
+        background: #f27202;
+        color: black;
+        border-color: #f27202;
+        transform: scale(1.1);
+      }
+
+      .arrow-pill:active {
+        transform: scale(0.95);
       }
 
       .arrow-pill {
@@ -443,7 +473,9 @@
             <button class="qty-btn" id="plus">+</button>
           </div>
 
-          <button class="add-cart">keranjang</button>
+          <button class="add-cart">
+            <i class="fa-solid fa-cart-shopping"></i> Keranjang
+          </button>
         </div>
       </div>
 
@@ -464,8 +496,13 @@
         </div>
 
         <div class="scroll-btns">
-          <button class="arrow-pill" id="prevBtn" title="Sebelumnya">🔼</button>
-          <button class="arrow-pill" id="nextBtn" title="Berikutnya">🔽</button>
+          <button class="arrow-pill" id="prevBtn" title="Sebelumnya">
+            <i class="fa-solid fa-circle-arrow-up"></i>
+          </button>
+
+          <button class="arrow-pill" id="nextBtn" title="Berikutnya">
+            <i class="fa-solid fa-circle-arrow-down"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -477,39 +514,33 @@
       const itemsMain = [
         {
           src: "img/makanan1.png",
-          title: "Ayam Geprek Pedas",
+          title: "Sop Iga",
           price: "$25",
-          desc: "Ayam goreng sambal bawang pedas gurih.",
+          desc: "Kuah bening gurih dengan potongan iga empuk.",
         },
         {
           src: "img/makanan2.png",
-          title: "Ikan Bakar Madu",
+          title: "Steak Daging",
           price: "$28",
-          desc: "Ikan segar dibakar dengan olesan madu.",
+          desc: "Daging steak juicy dengan saus spesial.",
         },
         {
           src: "img/makanan3.png",
-          title: "Rendang Daging",
+          title: "Nasi Goreng",
           price: "$30",
-          desc: "Rendang daging sapi Padang kaya rempah.",
+          desc: "Nasi goreng rumahan dengan bumbu khas.",
         },
         {
           src: "img/makanan4.png",
-          title: "Ayam Geprek Pedas",
+          title: "Tumis Kangkung",
           price: "$25",
-          desc: "Ayam goreng sambal bawang pedas gurih.",
+          desc: "Kangkung segar ditumis bawang putih.",
         },
         {
           src: "img/makanan5.png",
-          title: "Ikan Bakar Madu",
+          title: "Sayur Asem",
           price: "$28",
-          desc: "Ikan segar dibakar dengan olesan madu.",
-        },
-        {
-          src: "img/makanan6.png",
-          title: "Rendang Daging",
-          price: "$30",
-          desc: "Rendang daging sapi Padang kaya rempah.",
+          desc: "Sayur asem segar dengan kuah asam gurih.",
         },
       ];
 

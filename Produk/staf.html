@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Staf | Serba Serbi Nasi Bu Henny</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warung Nasi Serba Serbi</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-  :root {
-    --orange: #f27202;
-    --orange-light: #ff9e41;
-    --white: #fff;
-    --dark: #111;
-    --muted: #666;
-  }
+    <style>
+      :root {
+        --orange: #f27202;
+        --orange-light: #ff9e41;
+        --white: #fff;
+        --dark: #111;
+        --muted: #666;
+      }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-  body {
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(180deg, #fff, #fffaf4);
-    color: var(--dark);
-    overflow-x: hidden;
-  }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(180deg, #fff, #fffaf4);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
 
-  /* HEADER */
+      /* HEADER */
       header {
         display: flex;
         align-items: center;
@@ -38,11 +45,11 @@
       }
 
       header {
-      transition: transform 0.25s ease;
+        transition: transform 0.25s ease;
       }
 
       header.hide {
-      transform: translateY(-100%);
+        transform: translateY(-100%);
       }
 
       .logo-area {
@@ -110,123 +117,125 @@
         border-color: #fff !important;
       }
 
-  /* HERO */
-  .hero {
-    padding-top:5px;
-    text-align: center;
-    max-width: 850px;
-    margin: 0 auto 60px;
-  }
+      /* HERO */
+      .hero {
+        padding-top: 5px;
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 60px;
+      }
 
-  .hero h1 {
-    font-family: "Playfair Display", serif;
-    font-size: 44px;
-    color: var(--dark);
-  }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 44px;
+        color: var(--dark);
+      }
 
-  .hero p {
-    color: var(--muted);
-    font-size: 18px;
-    line-height: 1.8;
-  }
+      .hero p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
 
-  /* TEAM GRID */
- .team-section {
-  max-width: 700px;
-  margin: 40px auto 120px;
-  padding: 0 6%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 60px;
-}
+      /* TEAM GRID */
+      .team-section {
+        max-width: 700px;
+        margin: 40px auto 120px;
+        padding: 0 6%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 60px;
+      }
 
-/* CARD HOVER FLOAT */
-.member:hover {
-  transform: translateY(-14px);
-  transition: .4s ease;
-}
+      /* CARD HOVER FLOAT */
+      .member:hover {
+        transform: translateY(-14px);
+        transition: 0.4s ease;
+      }
 
-/* FOTO */
-.member .photo {
-  width: 200px;
-  height: 260px;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-  transition: 0.5s ease;
-  box-shadow:
-    0 15px 40px rgba(0, 0, 0, 0.08),
-    0 0 0 0 rgba(242, 114, 2, 0.4);
-}
+      /* FOTO */
+      .member .photo {
+        width: 200px;
+        height: 260px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        transition: 0.5s ease;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08),
+          0 0 0 0 rgba(242, 114, 2, 0.4);
+      }
 
-/* HOVER: GLOW ORANGE */
-.member:hover .photo {
-  box-shadow:
-    0 20px 45px rgba(0, 0, 0, 0.15),
-    0 0 25px 4px rgba(242, 114, 2, 0.5);
-}
+      /* HOVER: GLOW ORANGE */
+      .member:hover .photo {
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15),
+          0 0 25px 4px rgba(242, 114, 2, 0.5);
+      }
 
-/* FOTO ZOOM */
-.member .photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: .6s ease;
-}
+      /* FOTO ZOOM */
+      .member .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.6s ease;
+      }
 
-.member:hover .photo img {
-  transform: scale(1.14);
-}
+      .member:hover .photo img {
+        transform: scale(1.14);
+      }
 
-/* GLOSSY OVERLAY */
-.member .photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0));
-  opacity: 0;
-  transition: .4s ease;
-}
+      /* GLOSSY OVERLAY */
+      .member .photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0)
+        );
+        opacity: 0;
+        transition: 0.4s ease;
+      }
 
-.member:hover .photo::after {
-  opacity: 1;
-}
+      .member:hover .photo::after {
+        opacity: 1;
+      }
 
-/* INFO */
-.info {
-  text-align: center;
-  margin-top: 12px;
-}
+      /* INFO */
+      .info {
+        text-align: center;
+        margin-top: 12px;
+      }
 
-.info h3 {
-  font-size: 22px;
-  font-weight: 700;
-  transition: .3s ease;
-}
+      .info h3 {
+        font-size: 22px;
+        font-weight: 700;
+        transition: 0.3s ease;
+      }
 
-.member:hover .info h3 {
-  color: var(--orange);
-}
+      .member:hover .info h3 {
+        color: var(--orange);
+      }
 
-.info p {
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 15px;
-}
+      .info p {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 15px;
+      }
 
-  footer {
-    background: #111;
-    color: #fff;
-    text-align: center;
-    padding: 26px;
-    font-size: 14px;
-  }
-</style>
-</head>
+      footer {
+        background: #111;
+        color: #fff;
+        text-align: center;
+        padding: 26px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
 
-<body>
- <header>
+  <body>
+    <header>
       <div class="logo-area">
         <img src="img/logo.png" alt="Logo TokoMakan" class="logo" />
         <span class="brand-text" id="brand-text"
@@ -244,75 +253,69 @@
       </nav>
     </header>
 
+    <section class="hero fade-in">
+      <h1>Tim di Balik Dapur Kami</h1>
+      <p>
+        Dedikasi, kehangatan, dan cinta pada masakan adalah rahasia di balik
+        setiap piring nasi yang tersaji. Kenali para sosok hebat yang memastikan
+        setiap rasa tetap autentik.
+      </p>
+    </section>
 
-<section class="hero fade-in">
-  <h1>Tim di Balik Dapur Kami</h1>
-  <p>Dedikasi, kehangatan, dan cinta pada masakan adalah rahasia di balik setiap piring nasi yang tersaji.  
-  Kenali para sosok hebat yang memastikan setiap rasa tetap autentik.</p>
-</section>
+    <section class="team-section">
+      <!-- Owner -->
+      <div class="member">
+        <div class="photo">
+          <img src="img/owner.jpeg" alt="Owner" />
+        </div>
 
-<section class="team-section">
+        <div class="info">
+          <h3>Galuh Pauline</h3>
+          <p>Owner & Pendiri</p>
+        </div>
+      </div>
 
-  <!-- Owner -->
-  <div class="member">
-  <div class="photo">
-    <img src="img/owner.jpeg" alt="Owner">
-  </div>
+      <!-- Manager -->
+      <div class="member">
+        <div class="photo">
+          <img src="img/manager.jpeg" alt="Manager" />
+        </div>
 
-  <div class="info">
-    <h3>Galuh Pauline</h3>
-    <p>Owner & Pendiri</p>
-  </div>
-</div>
+        <div class="info">
+          <h3>Pajri Muhamamd</h3>
+          <p>Manager</p>
+        </div>
+      </div>
 
+      <!-- Koki & Barista -->
+      <div class="member">
+        <div class="photo">
+          <img src="img/kepala_koki.jpeg" alt="Kepala koki" />
+        </div>
 
-  <!-- Manager -->
-  <div class="member">
-  <div class="photo">
-    <img src="img/manager.jpeg" alt="Manager">
-  </div>
+        <div class="info">
+          <h3>Dicky Kamilludin</h3>
+          <p>Kepala Koki</p>
+        </div>
+      </div>
 
-  <div class="info">
-    <h3>Pajri Muhamamd</h3>
-    <p>Manager</p>
-  </div>
-</div>
+      <div class="member">
+        <div class="photo">
+          <img src="img/Barista.jpeg" alt="Barista" />
+        </div>
 
-  <!-- Koki & Barista -->
-<div class="member">
-  <div class="photo">
-    <img src="img/kepala_koki.jpeg" alt="Kepala koki">
-  </div>
+        <div class="info">
+          <h3>Serafina Alveric</h3>
+          <p>Barista</p>
+        </div>
+      </div>
+    </section>
 
-  <div class="info">
-    <h3>Dicky Kamilludin</h3>
-    <p>Kepala Koki</p>
-  </div>
-</div>
+    <footer>
+      © 2025 Serba Serbi Nasi Bu Henny — Dikelola oleh tim hebat yang memasak
+      dengan cinta.
+    </footer>
 
-
-<div class="member">
-  <div class="photo">
-    <img src="img/Barista.jpeg" alt="Barista">
-  </div>
-
-  <div class="info">
-    <h3>Serafina Alveric</h3>
-    <p>Barista</p>
-  </div>
-</div>
-
-
-</section>
-
-<footer>
-  © 2025 Serba Serbi Nasi Bu Henny — Dikelola oleh tim hebat yang memasak dengan cinta.
-</footer>
-
-<script>
- 
-
-</script>
-
-</body>
+    <script></script>
+  </body>
 </html>
