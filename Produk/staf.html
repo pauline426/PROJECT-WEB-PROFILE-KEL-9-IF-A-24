@@ -32,26 +32,22 @@
       }
 
       /* HEADER */
-      header {
+            header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 1rem 2rem;
-        background: transparent;
         position: sticky;
         top: 0;
         z-index: 100;
         color: inherit;
-      }
-
-      header {
         transition: transform 0.25s ease;
       }
 
+      /* Nge hide header saat di scroll */
       header.hide {
-        transform: translateY(-100%);
+      transform: translateY(-100%);
       }
-
       .logo-area {
         display: flex;
         align-items: center;
@@ -316,6 +312,22 @@
       dengan cinta.
     </footer>
 
-    <script></script>
+    <script>
+        // Saat scroll header akan hilang
+let lastScroll = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.scrollY;
+
+  if (currentScroll > lastScroll && currentScroll > 0) {
+    header.classList.add("hide");
+  } else {
+    header.classList.remove("hide");
+  }
+
+  lastScroll = currentScroll;
+});
+    </script>
   </body>
 </html>
