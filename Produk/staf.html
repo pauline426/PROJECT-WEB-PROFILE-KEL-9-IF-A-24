@@ -310,7 +310,21 @@
 </footer>
 
 <script>
- 
+   // Saat scroll header akan hilang
+let lastScroll = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.scrollY;
+
+  if (currentScroll > lastScroll && currentScroll > 0) {
+    header.classList.add("hide");
+  } else {
+    header.classList.remove("hide");
+  }
+
+  lastScroll = currentScroll;
+});
 
 </script>
 
