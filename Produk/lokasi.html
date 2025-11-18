@@ -61,6 +61,7 @@
         font-weight: bold;
         transition: 0.3s;
       }
+
       .nav-menu li a:hover {
         color: #f27202;
       } /* Tombol kanan */
@@ -374,6 +375,16 @@
 </footer>
 
     <script>
+       // otomatis ada background color saat sedang aktif
+  const navLinks = document.querySelectorAll('.nav-menu li a');
+  const currentLocation = location.href;
+
+  navLinks.forEach(link => {
+    if (link.href === currentLocation) {
+      link.classList.add('active');
+    }
+  });
+  
       document
         .getElementById("contactForm")
         .addEventListener("submit", function (e) {
