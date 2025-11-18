@@ -47,6 +47,37 @@
         gap: 10px;
         padding: 1.3rem 3rem;
       }
+      header nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      header nav ul li a {
+        color: #111;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 15px;
+        background: #ff7a00;
+        border-radius: 50px;
+        display: inline-block;
+        transition: 0.3s ease;
+        transform: scale(1);
+      }
+
+      /* Hover — membesar */
+      header nav ul li a:hover {
+        transform: scale(1.25);
+        background: #ff9a2a;
+        color: #fff;
+      }
+
+      /* Halaman aktif */
+      header nav ul li a.active {
+        transform: scale(1.25);
+        background: #ff9a2a;
+        color: #fff;
+      }
 
       .logo-area {
         display: flex;
@@ -511,6 +542,15 @@
 
     <!-- ======================== SCRIPT ======================== -->
     <script>
+      const currentPage = window.location.pathname.split("/").pop();
+      const navLinks = document.querySelectorAll("header nav ul li a");
+
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
+
       const itemsMain = [
         {
           src: "img/makanan1.png",

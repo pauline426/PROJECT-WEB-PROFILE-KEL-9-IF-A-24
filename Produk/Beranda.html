@@ -45,7 +45,9 @@
         color: #f27202;
         transition: color 0.5s ease;
         line-height: 1.3;
-      } /* Menu di tengah */
+      }
+
+      /* Menu di tengah */
       .nav-menu {
         display: flex;
         gap: 40px;
@@ -58,11 +60,29 @@
         color: #111;
         text-decoration: none;
         font-weight: bold;
-        transition: 0.3s;
+        background-color: #ff7a00;
+        padding: 8px 15px;
+        border-radius: 50px;
+        transition: 0.3s ease;
+        display: inline-block;
+        transform: scale(1);
       }
+
+      /* Membesar saat hover */
       .nav-menu li a:hover {
-        color: #f27202;
-      } /* Tombol kanan */
+        transform: scale(1.25);
+        background-color: #ff9a2a;
+        color: #fff;
+      }
+
+      /* Membesar saat halaman itu aktif (visited / current) */
+      .nav-menu li a.active {
+        transform: scale(1.25);
+        background-color: #ff9a2a;
+        color: #fff;
+      }
+
+      /* Tombol kanan */
       .auth-buttons {
         display: flex;
         gap: 15px;
@@ -95,7 +115,7 @@
       }
       .hero-text-wrapper {
         max-width: 450px;
-        margin-top: -34svh;
+        margin-top: -48vh;
       }
       .hero-text-wrapper h1 {
         font-size: 45px;
@@ -123,7 +143,7 @@
         width: 540px;
         border-radius: 20px;
         margin-right: 60px;
-        margin-top: -40px;
+        margin-top: -60px;
       }
 
       /* ===== CARD MENU ===== */
@@ -131,7 +151,7 @@
         display: flex;
         gap: 20px;
         padding: 20px 50px;
-        margin-top: -240px;
+        margin-top: -270px;
         margin-bottom: 120px;
       }
       .menu-card {
@@ -187,7 +207,7 @@
         <li><a href="tentang.html">Tentang</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="staf.html">Staf</a></li>
-        <li><a href="staf.html">Lokasi</a></li>
+        <li><a href="lokasi.html">Lokasi</a></li>
       </ul>
       <div class="auth-buttons">
         <a class="signin" href="#login">Sign In</a>
@@ -195,6 +215,7 @@
       </div>
     </nav>
     <!-- ================= HERO ================= -->
+
     <section class="hero" id="beranda">
       <div class="hero-text-wrapper">
         <h1>Serba Serbi Makanan</h1>
@@ -228,5 +249,15 @@
       © 2025 TokoMakan. Semua hak cipta dilindungi. | Dikembangkan oleh Pajri
       Muhamad
     </footer>
+    <script>
+      const currentPage = window.location.pathname.split("/").pop();
+      const menuLinks = document.querySelectorAll(".nav-menu li a");
+
+      menuLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    </script>
   </body>
 </html>

@@ -69,40 +69,93 @@
         transition: color 0.5s ease;
       }
 
-      nav {
-        flex-grow: 1;
-        text-align: center;
+     nav {
+        width: 100%;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
       }
-
-      nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: inline-flex;
-        gap: 2rem;
-        flex-wrap: nowrap;
-        justify-content: center;
-        color: inherit;
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
       }
-
-      nav ul.nav-white-text {
-        color: white !important;
+      .logo {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: #fff;
+        padding: 5px;
+        box-shadow: 0 0 20px rgba(255, 166, 0, 0.6),
+          0 0 40px rgba(255, 166, 0, 0.3);
       }
-
-      nav ul li {
-        cursor: pointer;
-        font-weight: 600;
-        color: inherit;
-        transition: color 0.3s;
-      }
-
-      nav ul li:hover {
+      .brand-text {
+        font-size: 1.1rem;
+        font-weight: 700;
         color: #f27202;
+        transition: color 0.5s ease;
+        line-height: 1.3;
       }
 
-      nav ul li a {
+      /* Menu di tengah */
+      .nav-menu {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .nav-menu li a {
+        color: #111;
         text-decoration: none;
-        color: inherit;
+        font-weight: bold;
+        background-color: #ff7a00;
+        padding: 5px 15px;
+        border-radius: 50px;
+        transition: 0.3s ease;
+        display: inline-block;
+        transform: scale(1);
+      }
+
+      /* Membesar saat hover */
+      .nav-menu li a:hover {
+        transform: scale(1.25);
+        background-color: #ff9a2a;
+        color: #fff;
+      }
+
+      /* Membesar saat halaman itu aktif (visited / current) */
+      .nav-menu li a.active {
+        transform: scale(1.25);
+        background-color: #ff9a2a;
+        color: #fff;
+      }
+
+      /* Tombol kanan */
+      .auth-buttons {
+        display: flex;
+        gap: 15px;
+      }
+      .auth-buttons a {
+        padding: 10px 18px;
+        border-radius: 30px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .signin {
+        color: #111;
+      }
+      .signin:hover {
+        background-color: #ff7a00;
+        border-radius: 50px;
+        transition: 1s;
+      }
+      .signup {
+        background-color: #ff7a00;
+        color: white;
       }
 
       body:not(.dark-mode) .signin:hover {
@@ -399,23 +452,23 @@
 <!-- Wave soft background -->
 <div class="wave-wrap" aria-hidden="true"><div class="big-wave"></div></div>
 
-<header>
+ <nav>
       <div class="logo-area">
-        <img src="img/logo.png" alt="Logo TokoMakan" class="logo" />
-        <span class="brand-text" id="brand-text"
-          >Warung Nasi <br />Serba Serbi</span
-        >
+        <img src="img/logo.png" alt="Logo" class="logo" />
+        <span class="brand-text">Warung Nasi<br />Serba Serbi</span>
       </div>
-      <nav>
-        <ul id="nav-menu">
-          <li><a href="Beranda.html">Beranda</a></li>
-          <li><a href="tentang.html">Tentang</a></li>
-          <li><a href="menu.html">Menu</a></li>
-          <li><a href="staf.html">Staf</a></li>
-          <li><a href="lokasi.html">Lokasi</a></li>
-        </ul>
-      </nav>
-    </header>
+      <ul class="nav-menu">
+        <li><a href="Beranda.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="staf.html">Staf</a></li>
+        <li><a href="staf.html">Lokasi</a></li>
+      </ul>
+      <div class="auth-buttons">
+        <a class="signin" href="#login">Sign In</a>
+        <a class="signup" href="#daftar">Sign Up</a>
+      </div>
+    </nav>
 
 <main class="container">
   <!-- HERO / narrative -->
@@ -689,7 +742,14 @@ document.getElementById('nextBtn').addEventListener('click', () => {
   resetAuto();
 });
 
+const currentPage = window.location.pathname.split("/").pop();
+      const menuLinks = document.querySelectorAll(".nav-menu li a");
 
+      menuLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
 
 
 </script>
