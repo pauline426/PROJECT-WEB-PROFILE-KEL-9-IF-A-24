@@ -427,7 +427,66 @@
   right: -7px;
 }
 
+/* Style keunggulan resto */
+.advantages-simple {
+  padding: 60px 0;
+  background: #fffaf6;
+  text-align: center;
+}
 
+.advantages-simple h2 {
+  color: var(--orange);
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+}
+
+.adv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.adv-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+.adv-list li img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.adv-list li span {
+  text-align: left;
+  display: block;
+}
+
+/* Hover efek ringan icon */
+.adv-list li:hover img {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .adv-list li {
+    flex-direction: row;
+    gap: 12px;
+    font-size: 15px;
+  }
+
+  .adv-list li img {
+    width: 35px;
+    height: 35px;
+  }
+}
 
 
   /* responsive */
@@ -445,6 +504,38 @@
     .nav-inner{padding:0 12px}
     nav a{font-size:14px}
   }
+
+   /* FOOTER */
+  .footer {
+  background: #222;
+  color: #eee;
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  color: #ff7a00;
+  margin-bottom: 12px;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 15px;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
 </style>
 </head>
 <body>
@@ -599,11 +690,69 @@
     </div>
   </section>
 
+  <!-- KEUNGGULAN RESTO -->
+<section class="advantages-simple">
+  <div class="container">
+    <h2>Kenapa Memilih Warung Nasi Serba Serbi?</h2>
+    <ul class="adv-list">
+      <li>
+        <img src="img/icon-halal.png" alt="Halal">
+        <span>100% Halal — Semua menu dijamin halal dan aman dikonsumsi semua kalangan.</span>
+      </li>
+      <li>
+        <img src="img/icon-fresh.png" alt="Fresh">
+        <span>Bahan Fresh Setiap Hari — Diolah langsung agar rasanya selalu maksimal.</span>
+      </li>
+      <li>
+        <img src="img/icon-best.png" alt="Terbaik">
+        <span>Resto Terbaik di Cianjur — Cita rasa autentik Sunda dengan pelayanan ramah.</span>
+      </li>
+      <li>
+        <img src="img/icon-varian.png" alt="Menu Variasi">
+        <span>Varian Menu Lengkap — Lebih dari 100 menu & varian untuk semua selera.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
 </main>
 
-<footer style="margin-top:80px;background:#111;color:#fff;padding:26px;text-align:center">
-  © 2025 Serba Serbi Nasi Bu Henny — Cita Rasa Rumahan yang Selalu Dirindukan
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Brand -->
+    <div class="footer-column">
+      <h3 class="footer-brand">Serba Serbi Nasi Bu Henny</h3>
+      <p>Cita rasa rumahan yang selalu dirindukan.</p>
+    </div>
+
+    <!-- Kontak -->
+    <div class="footer-column">
+      <h4>Hubungi Kami</h4>
+      <p>📞 +62 8572 0261 642</p>
+      <p>✉️ serbaserbi@gmail.com</p>
+    </div>
+
+    <!-- Alamat -->
+    <div class="footer-column">
+      <h4>Lokasi</h4>
+      <p>📍 Jl.Pasirgede Raya,Cianjur</p>
+    </div>
+
+    <!-- Jam Operasional -->
+    <div class="footer-column">
+      <h4>Jam Operasional</h4>
+      <p>Senin - Sabtu<br>07:00 – 20:00 WIB</p> <br>
+      <p>Sabtu - Minggu<br>07:00 – 21:00 WIB</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Serba Serbi Nasi Bu Henny — Semua Hak Dilindungi</p>
+  </div>
 </footer>
+
 
 <script>
 
