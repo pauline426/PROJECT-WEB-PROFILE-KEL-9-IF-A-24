@@ -115,7 +115,7 @@
       }
       .hero-text-wrapper {
         max-width: 450px;
-        margin-top: -48vh;
+        margin-top: -35vh;
       }
       .hero-text-wrapper h1 {
         font-size: 45px;
@@ -143,7 +143,7 @@
         width: 540px;
         border-radius: 20px;
         margin-right: 60px;
-        margin-top: -60px;
+        margin-top: -10px;
       }
 
       /* ===== CARD MENU ===== */
@@ -171,7 +171,7 @@
         width: 100%;
         height: 140px;
         object-fit: cover;
-        border-radius: 10px;
+        border-radius: 100px;
       }
       .menu-card p {
         font-weight: 700;
@@ -181,6 +181,14 @@
         color: white;
         padding: 5px 10px;
         border-radius: 10px;
+      }
+      /* Fade effect */
+      .fade {
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+      .fade.show {
+        opacity: 1;
       }
 
       /* FOOTER */
@@ -314,19 +322,25 @@
 
     <!-- ========== CARD MENU ========== -->
     <div class="menu-cards">
-      <div class="menu-card">
-        <img src="img/foto1.png" />
-        <p>Kangkung Top Dunia</p>
+      <!-- Card Hidangan Utama -->
+      <div class="menu-card fade show" id="card-utama">
+        <img id="img-utama" src="img/hidangan/makanan1.jpeg" />
+        <p>Hidangan Utama</p>
       </div>
-      <div class="menu-card">
-        <img src="img/foto2.png" />
-        <p>Nasi Liwet Spesial gurih lada</p>
+
+      <!-- Card Minuman -->
+      <div class="menu-card fade show" id="card-minuman">
+        <img id="img-minuman" src="img/minuman/minuman1.jpeg" />
+        <p>Minuman</p>
       </div>
-      <div class="menu-card">
-        <img src="img/foto3.png" />
-        <p>Sup Iga Kaldu Hitam</p>
+
+      <!-- Card Cemilan -->
+      <div class="menu-card fade show" id="card-cemilan">
+        <img id="img-cemilan" src="img/cemilan/cemilan1.jpeg" />
+        <p>Cemilan</p>
       </div>
     </div>
+
     <footer class="footer">
       <div class="footer-container">
         <!-- Brand -->
@@ -362,6 +376,97 @@
       </div>
     </footer>
     <script>
+      const dataSlide = {
+        utama: [
+          "img/hidangan/makanan1.jpeg",
+          "img/hidangan/makanan2.jpeg",
+          "img/hidangan/makanan3.jpeg",
+          "img/hidangan/makanan4.jpeg",
+          "img/hidangan/makanan5.jpeg",
+          "img/hidangan/makanan6.jpeg",
+          "img/hidangan/makanan7.jpeg",
+          "img/hidangan/makanan8.jpeg",
+          "img/hidangan/makanan9.jpeg",
+          "img/hidangan/makanan10.jpeg",
+          "img/hidangan/makanan11.jpeg",
+          "img/hidangan/makanan12.jpeg",
+        ],
+        minuman: [
+          "img/minuman/minuman1.jpeg",
+          "img/minuman/minuman2.jpeg",
+          "img/minuman/minuman3.jpeg",
+          "img/minuman/minuman4.jpeg",
+          "img/minuman/minuman5.jpeg",
+          "img/minuman/minuman1.jpeg",
+          "img/minuman/minuman2.jpeg",
+          "img/minuman/minuman3.jpeg",
+          "img/minuman/minuman5.jpeg",
+          "img/minuman/minuman4.jpeg",
+          "img/minuman/minuman6.jpeg",
+          "img/minuman/minuman4.jpeg",
+        ],
+        cemilan: [
+          "img/cemilan/cemilan1.jpeg",
+          "img/cemilan/cemilan2.jpeg",
+          "img/cemilan/cemilan3.jpeg",
+          "img/cemilan/cemilan4.jpeg",
+          "img/cemilan/cemilan2.jpeg",
+          "img/cemilan/cemilan5.jpeg",
+          "img/cemilan/cemilan1.jpeg",
+          "img/cemilan/cemilan6.jpeg",
+          "img/cemilan/cemilan3.jpeg",
+          "img/cemilan/cemilan4.jpeg",
+          "img/cemilan/cemilan5.jpeg",
+          "img/cemilan/cemilan6.jpeg",
+        ],
+      };
+
+      // index awal setiap kategori
+      window.idxUtama = 0;
+      window.idxMinuman = 0;
+      window.idxCemilan = 0;
+
+      function slideChange(idCard, idImg, data, indexName) {
+        const card = document.getElementById(idCard);
+        const img = document.getElementById(idImg);
+
+        card.classList.remove("show");
+
+        setTimeout(() => {
+          img.src = data[window[indexName]];
+          window[indexName] = (window[indexName] + 1) % data.length;
+          card.classList.add("show");
+        }, 600);
+      }
+
+      // interval rotasi masing-masing card
+      setInterval(
+        () =>
+          slideChange("card-utama", "img-utama", dataSlide.utama, "idxUtama"),
+        2500
+      );
+      setInterval(
+        () =>
+          slideChange(
+            "card-minuman",
+            "img-minuman",
+            dataSlide.minuman,
+            "idxMinuman"
+          ),
+        2500
+      );
+      setInterval(
+        () =>
+          slideChange(
+            "card-cemilan",
+            "img-cemilan",
+            dataSlide.cemilan,
+            "idxCemilan"
+          ),
+        2500
+      );
+
+      // highlight menu navbar
       const currentPage = window.location.pathname.split("/").pop();
       const menuLinks = document.querySelectorAll(".nav-menu li a");
 
