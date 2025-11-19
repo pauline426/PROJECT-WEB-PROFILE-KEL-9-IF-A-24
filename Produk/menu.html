@@ -3,1075 +3,335 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Warung Nasi Serba Serbi</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <title>Warung Mpok Darmi</title>
 
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-
       body {
-        background: #ffffff;
-        overflow-x: hidden;
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: #fff7ef;
       }
 
-      /* BACKGROUND */
-      .bg-shape {
-        position: fixed;
-        top: 0;
-        left: 0;
+      /* NAVBAR */
+      nav {
         width: 100%;
-        height: 100%;
-        background: linear-gradient(120deg, #f6f1e7 40%, #ffffff 100%);
-        z-index: -1;
-      }
-
-      /* HEADER */
-      header {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-        gap: 10px;
-        padding: 1.3rem 3rem;
-      }
-      header nav ul {
+        padding: 10px 30px;
         display: flex;
-        list-style: none;
-        gap: 30px;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
       }
-
-      header nav ul li a {
-        color: #111;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 8px 15px;
-        background: #ff7a00;
-        border-radius: 50px;
-        display: inline-block;
-        transition: 0.3s ease;
-        transform: scale(1);
-      }
-
-      /* Hover — membesar */
-      header nav ul li a:hover {
-        transform: scale(1.25);
-        background: #ff9a2a;
-        color: #fff;
-      }
-
-      /* Halaman aktif */
-      header nav ul li a.active {
-        transform: scale(1.25);
-        background: #ff9a2a;
-        color: #fff;
-      }
-
       .logo-area {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 1rem;
       }
-
       .logo {
-        width: 60px;
         height: 60px;
+        width: 60px;
         border-radius: 50%;
-        padding: 5px;
         background: #fff;
-        box-shadow: 0 0 20px rgba(255, 166, 0, 0.5);
+        padding: 5px;
+        box-shadow: 0 0 20px rgba(255, 166, 0, 0.6),
+          0 0 40px rgba(255, 166, 0, 0.3);
+      }
+      .brand-text {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #f27202;
+        transition: color 0.5s ease;
+        line-height: 1.3;
       }
 
-      /* NAV DI TENGAH */
-      nav {
-        justify-self: center;
-      }
-
-      nav ul {
+      /* MENU NAV TENGAH */
+      .nav-menu {
         display: flex;
         gap: 40px;
         list-style: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
       }
-
-      nav ul li a {
+      .nav-menu li a {
+        color: #111;
         text-decoration: none;
         font-weight: bold;
-        color: #333;
-      }
-
-      /* HAMBURGER di kanan */
-      .right-header {
-        justify-self: end;
-        display: flex;
-        align-items: center;
         background-color: #ff7a00;
-        padding: 8px 15px;
+        padding: 5px 15px;
         border-radius: 50px;
+        transition: 0.3s ease;
+        display: inline-block;
+        transform: scale(1);
       }
-
-      .right-header:hover {
-        background: #ff9a2a;
-      }
-
-      .hamburger {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 15px;
-        background: transparent;
-        border: none;
-      }
-
-      .ham-icon {
-        width: 28px;
-        height: 3px;
-        background: #000000;
-        position: relative;
-        border-radius: 2px;
-      }
-      .ham-icon::before,
-      .ham-icon::after {
-        content: "";
-        width: 28px;
-        height: 3px;
-        background: #0c0c0c;
-        position: absolute;
-        left: 0;
-        border-radius: 2px;
-      }
-      .ham-icon::before {
-        top: -8px;
-      }
-      .ham-icon::after {
-        top: 8px;
-      }
-
-      /* SLIDE MENU (kanan) */
-      .side-menu {
-        position: fixed;
-        top: 0;
-        right: -300px;
-        width: 300px;
-        height: 100%;
-        background: #f27202; /* orange background */
-        box-shadow: -8px 0 30px rgba(0, 0, 0, 0.15);
-        transition: right 0.38s cubic-bezier(0.2, 0.9, 0.2, 1);
-        padding: 22px;
-        z-index: 1200;
+      .nav-menu li a:hover,
+      .nav-menu li a.active {
+        transform: scale(1.25);
+        background-color: #ff9a2a;
         color: #fff;
+      }
+
+      /* RIGHT BUTTONS */
+      .auth-buttons {
         display: flex;
-        flex-direction: column;
-      }
-
-      .side-menu.active {
-        right: 0;
-      }
-
-      .side-menu .close-btn {
-        background: transparent;
-        border: none;
-        color: #fff;
-        font-size: 30px;
-        align-self: flex-end;
-        cursor: pointer;
-      }
-
-      .side-menu h3 {
-        margin: 6px 0 14px 0;
-        font-size: 20px;
-      }
-
-      .side-menu ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        margin-top: 8px;
-      }
-
-      .side-menu ul li {
-        font-size: 17px;
-        cursor: pointer;
-        padding: 8px 6px;
-        border-radius: 6px;
-      }
-      .side-menu ul li:hover {
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      /* overlay ketika menu aktif */
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.25);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s;
-        z-index: 1100;
-      }
-      .overlay.active {
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      /* KONTEN UTAMA */
-      .container {
-        display: flex;
-        padding: 50px 80px;
-        justify-content: space-between;
-      }
-
-      /* TEXT KIRI */
-      .left {
-        width: 40%;
-        padding-top: 60px;
-      }
-
-      .title {
-        font-size: 40px;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-
-      .rating {
-        color: gold;
-        font-size: 20px;
-        margin-bottom: 10px;
-      }
-
-      .price {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        color: #f27202;
-      }
-
-      .desc {
-        margin-bottom: 25px;
-        line-height: 1.5;
-      }
-
-      /* Add to cart */
-      .cart-control {
-        display: flex;
-        align-items: center;
         gap: 15px;
-        margin-bottom: 20px;
+        margin-right: 60px;
+      }
+      .auth-buttons a {
+        padding: 10px 18px;
+        border-radius: 30px;
+        font-weight: 700;
+        text-decoration: none;
       }
 
-      .qty-box {
+      .signin {
+        color: black;
+      }
+      .signin:hover {
+        background-color: #ff7a00;
+        border-radius: 50px;
+        transition: 1s;
+        color: white;
+      }
+      .signup {
+        background-color: #ff7a00;
+        color: white;
+      }
+
+      /* LAYOUT */
+      .container {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        margin-top: 10px;
+      }
+
+      /* SIDEBAR */
+      .sidebar {
+        background: #fff1dd;
+        padding: 30px;
+        height: calc(100vh - 80px);
+        border-radius: 0 40px 0 0;
+      }
+      .sidebar h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #7a3e00;
+      }
+      
+      .menu-item {
+        font-weight: bold;
+        color: #ff7a00;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #ffbe7a;
+        margin: 20px 0;
+        cursor: pointer;
+        transition: 0.25s ease;  
+      }
+      .menu-item:hover {
+      transform: scale(1.12);  
+      color: #ff9a2a;
+      }
+
+      /* CONTENT */
+      .content {
+        padding: 20px;
+        height: calc(100vh - 80px);
+        overflow-y: auto;
+      }
+
+      /* SEARCH BAR MODERN */
+      .search-modern {
+        width: 70%;
+        margin: 0 auto 25px auto;
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 20px;
+      }
+      .search-modern input {
+        flex: 1;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 40px 0 0 40px;
+        font-size: 17px;
+        background: #fffdf0;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+      .search-modern button {
+        width: 55px;
+        height: 48px;
+        border: none;
+        border-radius: 0 40px 40px 0;
+        background: white;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+      .search-modern button img {
+        width: 24px;
+        opacity: 0.7;
       }
 
-      .qty-btn {
-        background: #f27202;
-        width: 35px;
-        height: 35px;
-        border-radius: 6px;
-        color: white;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
+      /* MENU GRID */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+      }
+
+      /* CARD MODEL BARU */
+      .card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+      }
+      .card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      /* AREA INFO */
+      .card-info {
+        background: #fff8ef;
+        padding: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .card-price {
+        font-size: 14px;
+        color: #ff7a00;
         font-weight: bold;
       }
-
-      .add-cart {
-        background: #f27202;
-        padding: 12px 25px;
-        border-radius: 8px;
-        color: white;
-        font-size: 16px;
-        border: none;
+      .add-btn {
+        font-size: 23px;
         cursor: pointer;
-        font-weight: 600;
-      }
-
-      /* GAMBAR BESAR */
-      .center {
-        position: relative;
-        width: 380px;
-      }
-
-      .main-img {
-        width: 380px;
-        height: 380px;
-        border-radius: 50%;
-        object-fit: cover;
-        transition: 0.45s ease;
-        box-shadow: 0 0 25px rgba(242, 114, 2, 0.5);
-      }
-
-      /* FOTO KECIL DI KANAN */
-      .right {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
-      }
-
-      .thumbs {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        align-items: center;
-      }
-
-      .small-box {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: 3px solid transparent;
-        transition: 0.22s ease;
-        background: #fff;
-      }
-
-      .small-box:hover {
-        transform: translateY(-4px);
-      }
-
-      .small-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .small-box.active {
-        border-color: #f27202;
-      }
-
-      /* BUTTON NEXT/PREV */
-      .scroll-btns {
-        display: flex;
-        flex-direction: column;
-        margin-top: 6px;
-        gap: 10px;
-        user-select: none;
-        align-items: center;
-      }
-
-      .arrow-pill {
-        background: #ffffff;
-        border: 2px solid #ddd;
-        border-radius: 50%;
-        padding: 10px;
-        cursor: pointer;
-        transition: 0.25s;
-        font-size: 20px;
-        color: #333;
-      }
-
-      .arrow-pill:hover {
-        background: #f27202;
-        color: black;
-        border-color: #f27202;
-        transform: scale(1.1);
-      }
-
-      .arrow-pill:active {
-        transform: scale(0.95);
-      }
-
-      .arrow-pill {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 64px; /* horizontal pill */
-        height: 36px;
-        border-radius: 999px;
-        border: 2px solid #f27202;
-        background: transparent;
-        color: #f27202;
-        font-size: 22px;
-        cursor: pointer;
-        transition: 0.18s;
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
-      }
-      .arrow-pill:hover {
-        transform: translateY(-3px);
-        background: rgba(242, 114, 2, 0.06);
-      }
-      .section-title {
-        font-size: 28px;
-        font-weight: 800;
-        margin: 40px 0 20px 10px;
-        color: #333;
-        text-align: center;
-      }
-
-      .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 20px;
-        padding: 0 20px 40px 20px;
-      }
-
-      .food-card {
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 15px;
-        text-align: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        transition: 0.3s;
-      }
-
-      .food-card:hover {
-        transform: translateY(-6px);
-      }
-
-      .food-card img {
-        width: 100%;
-        height: 195px;
-        object-fit: cover;
-        border-radius: 15px;
-      }
-
-      .food-name {
-        margin-top: 12px;
-        font-size: 18px;
-        font-weight: 700;
-      }
-
-      .food-desc {
-        font-size: 14px;
-        color: #777;
-        margin-top: 5px;
-      }
-
-      .food-price {
-        margin-top: 10px;
-        background: #c78a5b;
-        display: inline-block;
-        padding: 8px 16px;
-        border-radius: 10px;
-        color: white;
-        font-weight: 700;
-      }
-
-      /* responsive small screens minor tweaks */
-      @media (max-width: 900px) {
-        .container {
-          padding: 30px 20px;
-          flex-direction: column;
-          gap: 30px;
-          align-items: center;
-        }
-        .left {
-          width: 100%;
-          text-align: center;
-        }
-        .center {
-          order: -1;
-        }
-        .right {
-          flex-direction: row;
-        }
-        .thumbs {
-          flex-direction: row;
-        }
-      }
-
-      /* FOOTER */
-      .footer {
-        background: #222;
-        color: #eee;
-        padding: 50px 20px;
-        font-family: "Poppins", sans-serif;
-      }
-
-      .footer-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: auto;
-      }
-
-      .footer-column h3,
-      .footer-column h4 {
-        color: #ff7a00;
-        margin-bottom: 12px;
-      }
-
-      .footer-bottom {
-        margin-top: 30px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-        padding-top: 15px;
-        text-align: center;
-        font-size: 0.85rem;
-        opacity: 0.8;
+        color: #ff8b00;
       }
     </style>
   </head>
 
   <body>
-    <div class="bg-shape"></div>
-
-    <!-- Overlay (click outside to close menu) -->
-    <div id="overlay" class="overlay"></div>
-
-    <!-- SLIDE MENU KATEGORI -->
-    <aside class="side-menu" id="sideMenu" aria-hidden="true">
-      <button class="close-btn" id="closeMenu">&times;</button>
-      <h3>Menu Kategori</h3>
-      <ul id="kategoriList">
-        <li data-cat="all">Semua menu</li>
-        <li data-cat="main">Hidangan Utama</li>
-        <li data-cat="cemilan">Cemilan</li>
-        <li data-cat="minuman">Minuman</li>
-      </ul>
-    </aside>
-
-    <!-- HEADER -->
-    <header>
+    <!-- NAVBAR -->
+    <nav>
       <div class="logo-area">
-        <img src="img/logo.png" class="logo" alt="logo" />
-        <h3 style="line-height: 1">Warung Nasi<br />Serba Serbi</h3>
+        <img src="img/logo.png" alt="Logo" class="logo" />
+        <span class="brand-text">Warung Nasi<br />Serba Serbi</span>
       </div>
 
-      <nav>
-        <ul>
-          <li><a href="Beranda.html">Beranda</a></li>
-          <li><a href="tentang.html">Tentang</a></li>
-          <li><a href="menu.html">Menu</a></li>
-          <li><a href="staf.html">Staf</a></li>
-          <li><a href="lokasi.html">Lokasi</a></li>
-        </ul>
-      </nav>
+      <ul class="nav-menu">
+        <li><a href="Beranda.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="staf.html">Staf</a></li>
+        <li><a href="lokasi.html">Lokasi</a></li>
+      </ul>
 
-      <div class="right-header">
-        <button class="hamburger" id="hamBtn" aria-expanded="false">
-          <span class="ham-icon" aria-hidden="true"></span>
-          <span style="color: #050505">Menu Kategori</span>
-        </button>
+      <div class="auth-buttons">
+        <a class="signin" href="#login">Sign In</a>
+        <a class="signup" href="#daftar">Sign Up</a>
       </div>
-    </header>
+    </nav>
 
-    <!-- ======================== MAIN CONTENT ======================== -->
+    <!-- LAYOUT -->
     <div class="container">
-      <!-- KIRI -->
-      <div class="left">
-        <h1 class="title" id="title">Ayam Geprek Pedas</h1>
+      <div class="sidebar">
+        <h1>Menu Makanan</h1>
 
-        <div class="rating">⭐⭐⭐⭐⭐ 4.8</div>
+        <div class="menu-item">Hidangan utama</div>
+        <div class="menu-item">Minuman</div>
+        <div class="menu-item">Camilan</div>
+      </div>
 
-        <div class="price" id="price">$25</div>
-
-        <p class="desc" id="desc">Ayam goreng sambal bawang pedas gurih.</p>
-
-        <!-- Add to cart -->
-        <div class="cart-control">
-          <div class="qty-box">
-            <button class="qty-btn" id="minus">-</button>
-            <span id="qty">0</span>
-            <button class="qty-btn" id="plus">+</button>
-          </div>
-
-          <button class="add-cart">
-            <i class="fa-solid fa-cart-shopping"></i> Keranjang
+      <div class="content">
+        <!-- SEARCH BAR MODERN -->
+        <div class="search-modern">
+          <input type="text" placeholder="Ketik disini..." />
+          <button>
+            <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" />
           </button>
         </div>
-      </div>
 
-      <!-- TENGAH -->
-      <div class="center">
-        <img
-          id="mainImg"
-          class="main-img"
-          src="img/makanan1.png"
-          alt="makanan"
-        />
-      </div>
+        <!-- GRID MENU -->
+        <div class="menu-grid"></div>
 
-      <!-- KANAN: FOTO KECIL + tombol vertical di bawah -->
-      <div class="right" id="rightCol">
-        <div class="thumbs" id="thumbBox">
-          <!-- thumbnails generated by JS -->
-        </div>
-
-        <div class="scroll-btns">
-          <button class="arrow-pill" id="prevBtn" title="Sebelumnya">
-            <i class="fa-solid fa-circle-arrow-up"></i>
-          </button>
-
-          <button class="arrow-pill" id="nextBtn" title="Berikutnya">
-            <i class="fa-solid fa-circle-arrow-down"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div id="all-menu-container">
-      <!-- Hidangan Utama -->
-      <h2 class="section-title">HIDANGAN UTAMA</h2>
-      <div class="card-grid" id="utamaGrid"></div>
-
-      <!-- Cemilan -->
-      <h2 class="section-title">CEMILAN</h2>
-      <div class="card-grid" id="cemilanGrid"></div>
-
-      <!-- Minuman -->
-      <h2 class="section-title">MINUMAN</h2>
-      <div class="card-grid" id="minumanGrid"></div>
-    </div>
-
-    <footer class="footer">
-      <div class="footer-container">
-        <!-- Brand -->
-        <div class="footer-column">
-          <h3 class="footer-brand">Serba Serbi Nasi Bu Henny</h3>
-          <p>Cita rasa rumahan yang selalu dirindukan.</p>
-        </div>
-
-        <!-- Kontak -->
-        <div class="footer-column">
-          <h4>Hubungi Kami</h4>
-          <p>📞 +62 8572 0261 642</p>
-          <p>✉️ serbaserbi@gmail.com</p>
-        </div>
-
-        <!-- Alamat -->
-        <div class="footer-column">
-          <h4>Lokasi</h4>
-          <p>📍 Jl.Pasirgede Raya,Cianjur</p>
-        </div>
-
-        <!-- Jam Operasional -->
-        <div class="footer-column">
-          <h4>Jam Operasional</h4>
-          <p>Senin - Sabtu<br />07:00 – 20:00 WIB</p>
-          <br />
-          <p>Sabtu - Minggu<br />07:00 – 21:00 WIB</p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2025 Serba Serbi Nasi Bu Henny — Semua Hak Dilindungi</p>
-      </div>
-    </footer>
-    <!-- ======================== SCRIPT ======================== -->
     <script>
-      const currentPage = window.location.pathname.split("/").pop();
-      const navLinks = document.querySelectorAll("header nav ul li a");
+      // ==========================
+      // DATA MENU
+      // ==========================
+      const dataMenu = {
+        utama: [
+          { img: "img/makanan1.png", title: "Rawon", price: "Rp 22.000" },
+          { img: "img/makanan2.png", title: "Mie Ayam", price: "Rp 18.000" },
+          { img: "img/makanan3.png", title: "Mie Bakso", price: "Rp 20.000" },
+          {img: "img/makanan4.png",title: "Nasi Goreng Udang",price: "Rp 25.000",},
+          {img: "img/makanan5.png",title: "Nasi Goreng VIP",price: "Rp 28.000",},
+          { img: "img/makanan1.png", title: "Rawon", price: "Rp 22.000" },
+          { img: "img/makanan2.png", title: "Mie Ayam", price: "Rp 18.000" },
+          { img: "img/makanan3.png", title: "Mie Bakso", price: "Rp 20.000" },
+          {img: "img/makanan4.png",title: "Nasi Goreng Udang",price: "Rp 25.000",},
+          {img: "img/makanan5.png",title: "Nasi Goreng VIP",price: "Rp 28.000",},
+        ],
 
-      navLinks.forEach((link) => {
-        if (link.getAttribute("href") === currentPage) {
-          link.classList.add("active");
-        }
-      });
+        minuman: [
+          { img: "img/minuman1.png", title: "Es Teh", price: "Rp 6.000" },
+          { img: "img/minuman2.png", title: "Jus Alpukat", price: "Rp 12.000" },
+          { img: "img/minuman3.png", title: "Es Jeruk", price: "Rp 8.000" },
+          { img: "img/minuman4.png", title: "Es Coklat", price: "Rp 10.000" },
+        ],
 
-      const itemsMain = [
-        {
-          src: "img/makanan1.png",
-          title: "Sop Iga",
-          price: "Rp 28.000",
-          desc: "Kuah bening gurih dengan potongan iga empuk.",
-        },
-        {
-          src: "img/makanan2.png",
-          title: "Steak Daging",
-          price: "Rp 35.000",
-          desc: "Daging steak juicy dengan saus spesial.",
-        },
-        {
-          src: "img/makanan3.png",
-          title: "Nasi Goreng",
-          price: "Rp 20.000",
-          desc: "Nasi goreng rumahan dengan bumbu khas.",
-        },
-        {
-          src: "img/makanan4.png",
-          title: "Tumis Kangkung",
-          price: "Rp 12.000",
-          desc: "Kangkung segar ditumis bawang putih.",
-        },
-        {
-          src: "img/makanan5.png",
-          title: "Sayur Asem",
-          price: "Rp 10.000",
-          desc: "Sayur asem segar dengan kuah asam gurih.",
-        },
-        {
-          src: "img/makanan1.png",
-          title: "Sop Iga",
-          price: "Rp 28.000",
-          desc: "Kuah bening gurih dengan potongan iga empuk.",
-        },
-        {
-          src: "img/makanan2.png",
-          title: "Steak Daging",
-          price: "Rp 35.000",
-          desc: "Daging steak juicy dengan saus spesial.",
-        },
-        {
-          src: "img/makanan3.png",
-          title: "Nasi Goreng",
-          price: "Rp 20.000",
-          desc: "Nasi goreng rumahan dengan bumbu khas.",
-        },
-        {
-          src: "img/makanan4.png",
-          title: "Tumis Kangkung",
-          price: "Rp 12.000",
-          desc: "Kangkung segar ditumis bawang putih.",
-        },
-        {
-          src: "img/makanan5.png",
-          title: "Sayur Asem",
-          price: "Rp 10.000",
-          desc: "Sayur asem segar dengan kuah asam gurih.",
-        },
-      ];
-      const itemsCemilan = [
-        {
-          src: "img/cemilan1.png",
-          title: "Tahu Walik",
-          price: "Rp 8.000",
-          desc: "Tahu walik gurih dengan isian kriuk pedas.",
-        },
-        {
-          src: "img/cemilan2.png",
-          title: "Basreng Meledak",
-          price: "Rp 10.000",
-          desc: "Basreng pedas renyah dengan bumbu meledak.",
-        },
-        {
-          src: "img/cemilan3.png",
-          title: "Kentang Krispi",
-          price: "Rp 9.000",
-          desc: "Kentang krispi gurih dengan saus pelengkap.",
-        },
-        {
-          src: "img/cemilan1.png",
-          title: "Tahu Walik",
-          price: "Rp 8.000",
-          desc: "Tahu walik gurih dengan isian kriuk pedas.",
-        },
-        {
-          src: "img/cemilan2.png",
-          title: "Basreng Meledak",
-          price: "Rp 10.000",
-          desc: "Basreng pedas renyah dengan bumbu meledak.",
-        },
-        {
-          src: "img/cemilan3.png",
-          title: "Kentang Krispi",
-          price: "Rp 9.000",
-          desc: "Kentang krispi gurih dengan saus pelengkap.",
-        },
-        {
-          src: "img/cemilan4.png",
-          title: "Cireng Isi",
-          price: "Rp 7.000",
-          desc: "Cireng kenyal dengan isian ayam pedas.",
-        },
-        {
-          src: "img/cemilan5.png",
-          title: "Dimsum",
-          price: "Rp 12.000",
-          desc: "Dimsum lembut dengan saus sambal khas.",
-        },
-        {
-          src: "img/cemilan4.png",
-          title: "Cireng Isi",
-          price: "Rp 7.000",
-          desc: "Cireng kenyal dengan isian ayam pedas.",
-        },
-        {
-          src: "img/cemilan5.png",
-          title: "Dimsum",
-          price: "Rp 12.000",
-          desc: "Dimsum lembut dengan saus sambal khas.",
-        },
-      ];
-      const itemsMinuman = [
-        {
-          src: "img/minuman1.png",
-          title: "Jus Jeruk",
-          price: "Rp 8.000",
-          desc: "Jus jeruk segar alami dengan rasa yang menyegarkan.",
-        },
-        {
-          src: "img/minuman2.png",
-          title: "Jus Alpukat",
-          price: "Rp 12.000",
-          desc: "Jus alpukat kental dan creamy dengan topping coklat.",
-        },
-        {
-          src: "img/minuman3.png",
-          title: "Jus Semangka",
-          price: "Rp 7.000",
-          desc: "Jus semangka dingin, manis dan sangat menyegarkan.",
-        },
-        {
-          src: "img/minuman4.png",
-          title: "Jus Nanas",
-          price: "Rp 8.000",
-          desc: "Jus nanas segar dengan aroma tropis yang khas.",
-        },
-        {
-          src: "img/minuman5.png",
-          title: "Jus Jambu",
-          price: "Rp 10.000",
-          desc: "Jus jambu merah lembut dan manis alami.",
-        },
-        {
-          src: "img/minuman1.png",
-          title: "Jus Jeruk",
-          price: "Rp 8.000",
-          desc: "Jus jeruk segar alami dengan rasa yang menyegarkan.",
-        },
-        {
-          src: "img/minuman2.png",
-          title: "Jus Alpukat",
-          price: "Rp 12.000",
-          desc: "Jus alpukat kental dan creamy dengan topping coklat.",
-        },
-        {
-          src: "img/minuman3.png",
-          title: "Jus Semangka",
-          price: "Rp 7.000",
-          desc: "Jus semangka dingin, manis dan sangat menyegarkan.",
-        },
-        {
-          src: "img/minuman4.png",
-          title: "Jus Nanas",
-          price: "Rp 8.000",
-          desc: "Jus nanas segar dengan aroma tropis yang khas.",
-        },
-        {
-          src: "img/minuman5.png",
-          title: "Jus Jambu",
-          price: "Rp 10.000",
-          desc: "Jus jambu merah lembut dan manis alami.",
-        },
-      ];
-
-      // initial category
-      let currentCategory = "main";
-      let currentItems = itemsMain;
-      let index = 0;
-
-      // elements
-      const mainImg = document.getElementById("mainImg");
-      const titleEl = document.getElementById("title");
-      const priceEl = document.getElementById("price");
-      const descEl = document.getElementById("desc");
-      const thumbBox = document.getElementById("thumbBox");
-      const prevBtn = document.getElementById("prevBtn");
-      const nextBtn = document.getElementById("nextBtn");
-
-      // overlay & menu
-      const overlay = document.getElementById("overlay");
-      const hamBtn = document.getElementById("hamBtn");
-      const sideMenu = document.getElementById("sideMenu");
-      const closeMenu = document.getElementById("closeMenu");
-      const kategoriList = document.getElementById("kategoriList");
-
-      function renderThumbnails() {
-        thumbBox.innerHTML = "";
-
-        const showCount = 3;
-        const loopCount = Math.min(showCount, currentItems.length);
-
-        for (let i = 0; i < loopCount; i++) {
-          const item = currentItems[i];
-          const div = document.createElement("div");
-          div.className = "small-box" + (i === index ? " active" : "");
-          div.dataset.id = i;
-          div.innerHTML = `<img src="${item.src}" class="small-img" alt="${item.title}"/>`;
-          div.addEventListener("click", () => {
-            index = Number(div.dataset.id);
-            updateDisplay();
-          });
-          thumbBox.appendChild(div);
-        }
-      }
-
-      function updateDisplay() {
-        // clamp index
-        if (index < 0) index = 0;
-        if (index >= currentItems.length) index = 0;
-
-        const it = currentItems[index];
-        // image transition
-        mainImg.style.opacity = 0;
-        setTimeout(() => {
-          mainImg.src = it.src;
-          titleEl.textContent = it.title;
-          priceEl.textContent = it.price;
-          descEl.textContent = it.desc;
-          mainImg.style.opacity = 1;
-
-          document
-            .querySelectorAll(".small-box")
-            .forEach((el) => el.classList.remove("active"));
-          const shown = document.querySelector(
-            `.small-box[data-id="${index}"]`
-          );
-          if (shown) shown.classList.add("active");
-        }, 180);
-      }
-
-      // initial render
-      function setCategory(cat) {
-        currentCategory = cat;
-        if (cat === "main") currentItems = itemsMain;
-        else if (cat === "cemilan") currentItems = itemsCemilan;
-        else if (cat === "minuman") currentItems = itemsMinuman;
-        index = 0;
-        renderThumbnails();
-        updateDisplay();
-      }
-
-      setCategory("main");
-
-      // next / prev
-      prevBtn.addEventListener("click", () => {
-        index = (index - 1 + currentItems.length) % currentItems.length;
-        updateDisplay();
-      });
-      nextBtn.addEventListener("click", () => {
-        index = (index + 1) % currentItems.length;
-        updateDisplay();
-      });
-
-      /* qty buttons */
-      let qty = 0;
-      document.getElementById("minus").onclick = () => {
-        qty = Math.max(0, qty - 1);
-        document.getElementById("qty").textContent = qty;
-      };
-      document.getElementById("plus").onclick = () => {
-        qty++;
-        document.getElementById("qty").textContent = qty;
+        camilan: [
+          { img: "img/cemilan1.png", title: "Risoles", price: "Rp 5.000" },
+          {img: "img/cemilan2.png",title: "Pisang Goreng",price: "Rp 7.000",},
+          { img: "img/cemilan3.png", title: "Sosis Bakar", price: "Rp 10.000" },
+          { img: "img/cemilan4.png", title: "Pentol", price: "Rp 8.000" },
+        ],
       };
 
-      function openMenu() {
-        sideMenu.classList.add("active");
-        overlay.classList.add("active");
-        hamBtn.setAttribute("aria-expanded", "true");
-        sideMenu.setAttribute("aria-hidden", "false");
-      }
-      function closeMenuFunc() {
-        sideMenu.classList.remove("active");
-        overlay.classList.remove("active");
-        hamBtn.setAttribute("aria-expanded", "false");
-        sideMenu.setAttribute("aria-hidden", "true");
-      }
+      // ==========================
+      // RENDER MENU KE HALAMAN
+      // ==========================
+      function renderMenu(list) {
+        const container = document.querySelector(".menu-grid");
+        container.innerHTML = "";
 
-      hamBtn.addEventListener("click", (e) => {
-        // toggle
-        if (sideMenu.classList.contains("active")) closeMenuFunc();
-        else openMenu();
-      });
-
-      closeMenu.addEventListener("click", closeMenuFunc);
-
-      // click outside to close: clicking overlay closes
-      overlay.addEventListener("click", closeMenuFunc);
-
-      // also close on escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && sideMenu.classList.contains("active"))
-          closeMenuFunc();
-      });
-
-      // kategori clicks
-      kategoriList.querySelectorAll("li").forEach((li) => {
-        li.addEventListener("click", () => {
-          const cat = li.dataset.cat;
-
-          if (cat === "all") {
-            closeMenuFunc();
-            displayAllMenu();
-            document
-              .getElementById("all-menu-container")
-              .scrollIntoView({ behavior: "smooth" });
-            return;
-          }
-
-          setCategory(cat);
-          closeMenuFunc();
-        });
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!sideMenu.classList.contains("active")) return;
-        const target = e.target;
-        const inMenu = sideMenu.contains(target);
-        const isHam = hamBtn.contains(target);
-        if (!inMenu && !isHam) {
-          closeMenuFunc();
-        }
-      });
-
-      // Accessibility: when sideMenu opens, focus first clickable item
-      sideMenu.addEventListener("transitionend", () => {
-        if (sideMenu.classList.contains("active")) {
-          const firstLi = sideMenu.querySelector("ul li");
-          firstLi && firstLi.focus && firstLi.focus();
-        }
-      });
-
-      // ==================== ALL MENU GRID =====================
-
-      function displayAllMenu() {
-        const container = document.getElementById("all-menu-container");
-
-        container.innerHTML = `
-    <h2 class="section-title">HIDANGAN UTAMA</h2>
-    <div class="card-grid" id="utamaGrid"></div>
-
-    <h2 class="section-title">CEMILAN</h2>
-    <div class="card-grid" id="cemilanGrid"></div>
-
-    <h2 class="section-title">MINUMAN</h2>
-    <div class="card-grid" id="minumanGrid"></div>
-  `;
-
-        loadSection("utamaGrid", itemsMain);
-        loadSection("cemilanGrid", itemsCemilan);
-        loadSection("minumanGrid", itemsMinuman);
-      }
-
-      function loadSection(gridId, items) {
-        const grid = document.getElementById(gridId);
-        items.forEach((item) => {
-          grid.innerHTML += `
-      <div class="food-card">
-        <img src="${item.src}">
-        <div class="food-name">${item.title}</div>
-        <div class="food-desc">${item.desc}</div>
-        <div class="food-price">${item.price}</div>
-      </div>
-    `;
+        list.forEach((item) => {
+          container.innerHTML += `
+        <div class="card">
+          <img src="${item.img}" />
+          <div class="card-info">
+            <div>
+              <div class="card-title">${item.title}</div>
+              <div class="card-price">${item.price}</div>
+            </div>
+            <div class="add-btn">🛒</div>
+          </div>
+        </div>
+      `;
         });
       }
 
-      // jalankan saat halaman dimuat
-      displayAllMenu();
+      // ==========================
+      // EVENT KLIK KATEGORI
+      // ==========================
+      document.querySelectorAll(".menu-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          let text = item.innerText.toLowerCase();
+
+          if (text.includes("hidangan")) renderMenu(dataMenu.utama);
+          else if (text.includes("minuman")) renderMenu(dataMenu.minuman);
+          else if (text.includes("camilan")) renderMenu(dataMenu.camilan);
+        });
+      });
+
+      // Set default tampilan awal (hidangan utama)
+      renderMenu(dataMenu.utama);
     </script>
   </body>
 </html>
