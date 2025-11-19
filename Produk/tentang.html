@@ -63,10 +63,11 @@
       }
 
       .brand-text {
-        font-size: 10x;
+        font-size: 1.1rem;
         font-weight: 700;
-        color: inherit;
+        color: #f27202;
         transition: color 0.5s ease;
+        line-height: 1.3;
       }
 
      nav {
@@ -472,8 +473,8 @@
 }
 
 .adv-list li img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   flex-shrink: 0;
 }
 
@@ -588,14 +589,13 @@
 
       <div class="cta-row">
         <button class="btn" id="ctaMenu">Lihat Menu</button>
-        <button class="btn" id="ctaOrder" style="background:#fff;color:var(--orange);border:2px solid var(--orange)">Pesan Sekarang</button>
       </div>
 
       <!-- highlights -->
       <div class="highlights" style="margin-top:26px">
         <div class="stat"><h3 id="count-served"></h3><p>Porsi Terjual</p></div>
         <div class="stat"><h3>4.9★</h3><p>Rating Rata-rata</p></div>
-        <div class="stat"><h3>100+</h3><p>Menu & Varian</p></div>
+        <div class="stat"><h3>50+</h3><p>Menu & Varian</p></div>
       </div>
     </div>
 
@@ -707,22 +707,22 @@
   <!-- KEUNGGULAN RESTO -->
 <section class="advantages-simple">
   <div class="container">
-    <h2>Kenapa Memilih Warung Nasi Serba Serbi?</h2>
+    <h2>Keunggulan Warung Nasi Serba Serbi?</h2>
     <ul class="adv-list">
       <li>
-        <img src="img/icon-halal.png" alt="Halal">
+        <img src="img/logo_halal.jpg" alt="Halal">
         <span>100% Halal — Semua menu dijamin halal dan aman dikonsumsi semua kalangan.</span>
       </li>
       <li>
-        <img src="img/icon-fresh.png" alt="Fresh">
+        <img src="img/makanan_fresh.jpg" alt="Fresh">
         <span>Bahan Fresh Setiap Hari — Diolah langsung agar rasanya selalu maksimal.</span>
       </li>
       <li>
-        <img src="img/icon-best.png" alt="Terbaik">
-        <span>Resto Terbaik di Cianjur — Cita rasa autentik Sunda dengan pelayanan ramah.</span>
+        <img src="img/bintang5.jpg" alt="Terbaik">
+        <span>Resto Terbaik di Cianjur — Cita rasa autentik dengan pelayanan ramah.</span>
       </li>
       <li>
-        <img src="img/icon-varian.png" alt="Menu Variasi">
+        <img src="img/logo_menu.jpg" alt="Menu Variasi">
         <span>Varian Menu Lengkap — Lebih dari 100 menu & varian untuk semua selera.</span>
       </li>
     </ul>
@@ -828,12 +828,6 @@ typeLoop();
 // Saat tombol lihat menu diklik pindah ke halaman menu.html
 document.getElementById("ctaMenu").addEventListener("click", function () {
   window.location.href = "menu.html";
-});
-
-
-// Saat tombol pesan sekarang di klik maka akan langsung ke halaman lokasi.html dan id contackform
-document.getElementById("ctaOrder").addEventListener("click", function () {
-  window.location.href = "lokasi.html#contactForm";
 });
 
  // animasi porsi terjual
