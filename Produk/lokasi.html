@@ -69,7 +69,6 @@
         transform: scale(1);
       }
 
-      /* Membesar saat hover */
       .nav-menu li a:hover {
         transform: scale(1.25);
         background-color: #ff9a2a;
@@ -366,6 +365,16 @@
     </footer>
 
     <script>
+       // otomatis ada background color saat sedang aktif
+  const navLinks = document.querySelectorAll('.nav-menu li a');
+  const currentLocation = location.href;
+
+  navLinks.forEach(link => {
+    if (link.href === currentLocation) {
+      link.classList.add('active');
+    }
+  });
+  
       document
         .getElementById("contactForm")
         .addEventListener("submit", function (e) {

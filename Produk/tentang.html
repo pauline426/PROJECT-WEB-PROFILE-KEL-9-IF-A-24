@@ -91,9 +91,23 @@
         box-shadow: 0 0 20px rgba(255, 166, 0, 0.6),
           0 0 40px rgba(255, 166, 0, 0.3);
       }
-      .brand-text {
-        font-size: 1.1rem;
-        font-weight: 700;
+
+      nav ul li {
+        cursor: pointer;
+        font-weight: 600;
+        color: inherit;
+        transition: color 0.3s;
+      }
+
+        .nav-menu li a.active {
+      background-color: #f27202;
+      color: white !important;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: 0.3s;
+      }
+
+      nav ul li:hover {
         color: #f27202;
         transition: color 0.5s ease;
         line-height: 1.3;
