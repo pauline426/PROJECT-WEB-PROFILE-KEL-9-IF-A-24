@@ -245,6 +245,7 @@
         <h1>Menu Makanan</h1>
 
         <div class="menu-item">Hidangan utama</div>
+        <div class="menu-item">Menu paket</div>
         <div class="menu-item">Minuman</div>
         <div class="menu-item">Camilan</div>
       </div>
@@ -266,33 +267,49 @@
       // DATA MENU
       // ==========================
       const dataMenu = {
-        utama: [
-          { img: "img/makanan1.png", title: "Rawon", price: "Rp 22.000" },
-          { img: "img/makanan2.png", title: "Mie Ayam", price: "Rp 18.000" },
-          { img: "img/makanan3.png", title: "Mie Bakso", price: "Rp 20.000" },
-          {img: "img/makanan4.png",title: "Nasi Goreng Udang",price: "Rp 25.000",},
-          {img: "img/makanan5.png",title: "Nasi Goreng VIP",price: "Rp 28.000",},
-          { img: "img/makanan1.png", title: "Rawon", price: "Rp 22.000" },
-          { img: "img/makanan2.png", title: "Mie Ayam", price: "Rp 18.000" },
-          { img: "img/makanan3.png", title: "Mie Bakso", price: "Rp 20.000" },
-          {img: "img/makanan4.png",title: "Nasi Goreng Udang",price: "Rp 25.000",},
-          {img: "img/makanan5.png",title: "Nasi Goreng VIP",price: "Rp 28.000",},
-        ],
+  utama: [
+    { img: "img/hidangan/makanan1.jpeg", title: "Menu 1", price: "Rp 22.000" },
+    { img: "img/hidangan/makanan2.jpeg", title: "Menu 2", price: "Rp 18.000" },
+    { img: "img/hidangan/makanan3.jpeg", title: "Menu 3", price: "Rp 20.000" },
+    { img: "img/hidangan/makanan4.jpeg", title: "Menu 4", price: "Rp 25.000" },
+    { img: "img/hidangan/makanan5.jpeg", title: "Menu 5", price: "Rp 28.000" },
+    { img: "img/hidangan/makanan6.jpeg", title: "Menu 6", price: "Rp 22.000" },
+    { img: "img/hidangan/makanan7.jpeg", title: "Menu 7", price: "Rp 24.000" },
+    { img: "img/hidangan/makanan8.jpeg", title: "Menu 8", price: "Rp 26.000" },
+    { img: "img/hidangan/makanan9.jpeg", title: "Menu 9", price: "Rp 30.000" },
+    { img: "img/hidangan/makanan10.jpeg", title: "Menu 10", price: "Rp 30.000" },
+    { img: "img/hidangan/makanan11.jpeg", title: "Menu 11", price: "Rp 30.000" },
+    { img: "img/hidangan/makanan12.jpeg", title: "Menu 12", price: "Rp 30.000" },
+  ],
 
-        minuman: [
-          { img: "img/minuman1.png", title: "Es Teh", price: "Rp 6.000" },
-          { img: "img/minuman2.png", title: "Jus Alpukat", price: "Rp 12.000" },
-          { img: "img/minuman3.png", title: "Es Jeruk", price: "Rp 8.000" },
-          { img: "img/minuman4.png", title: "Es Coklat", price: "Rp 10.000" },
-        ],
+  paket: [
+    { img: "img/paket/paket1.png", title: "Paket 1", price: "Rp 18.000" },
+    { img: "img/paket/paket2.png", title: "Paket 2", price: "Rp 20.000" },
+    { img: "img/paket/paket3.png", title: "Paket 3", price: "Rp 22.000" },
+    { img: "img/paket/paket4.png", title: "Paket 4", price: "Rp 24.000" },
+    { img: "img/paket/paket5.png", title: "Paket 5", price: "Rp 26.000" },
+    { img: "img/paket/paket6.png", title: "Paket 6", price: "Rp 28.000" },
+  ],
 
-        camilan: [
-          { img: "img/cemilan1.png", title: "Risoles", price: "Rp 5.000" },
-          {img: "img/cemilan2.png",title: "Pisang Goreng",price: "Rp 7.000",},
-          { img: "img/cemilan3.png", title: "Sosis Bakar", price: "Rp 10.000" },
-          { img: "img/cemilan4.png", title: "Pentol", price: "Rp 8.000" },
-        ],
-      };
+  minuman: [
+    { img: "img/minuman/minuman1.png", title: "Minuman 1", price: "Rp 6.000" },
+    { img: "img/minuman/minuman2.png", title: "Minuman 2", price: "Rp 7.000" },
+    { img: "img/minuman/minuman3.png", title: "Minuman 3", price: "Rp 8.000" },
+    { img: "img/minuman/minuman4.png", title: "Minuman 4", price: "Rp 10.000" },
+    { img: "img/minuman/minuman5.png", title: "Minuman 5", price: "Rp 12.000" },
+    { img: "img/minuman/minuman6.png", title: "Minuman 6", price: "Rp 14.000" },
+  ],
+
+  camilan: [
+    { img: "img/cemilan/cemilan1.png", title: "Cemilan 1", price: "Rp 5.000" },
+    { img: "img/cemilan/cemilan2.png", title: "Cemilan 2", price: "Rp 7.000" },
+    { img: "img/cemilan/cemilan3.png", title: "Cemilan 3", price: "Rp 10.000" },
+    { img: "img/cemilan/cemilan4.png", title: "Cemilan 4", price: "Rp 8.000" },
+    { img: "img/cemilan/cemilan5.png", title: "Cemilan 5", price: "Rp 9.000" },
+    { img: "img/cemilan/cemilan6.png", title: "Cemilan 6", price: "Rp 11.000" },
+  ],
+};
+
 
       // ==========================
       // RENDER MENU KE HALAMAN
@@ -325,6 +342,7 @@
           let text = item.innerText.toLowerCase();
 
           if (text.includes("hidangan")) renderMenu(dataMenu.utama);
+          else if (text.includes("paket")) renderMenu(dataMenu.paket);
           else if (text.includes("minuman")) renderMenu(dataMenu.minuman);
           else if (text.includes("camilan")) renderMenu(dataMenu.camilan);
         });
