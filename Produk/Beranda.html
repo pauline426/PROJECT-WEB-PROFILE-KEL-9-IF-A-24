@@ -346,6 +346,88 @@
           padding: 6px 12px;
         }
       }
+      /* MOBILE & TABLET MENU */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 2001;
+      }
+      .hamburger span {
+        width: 30px;
+        height: 4px;
+        background: #ff7a00;
+        border-radius: 3px;
+      }
+
+      /* Menu slide dari kanan */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 100vh;
+        background: #ff7a00;
+        transition: 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        z-index: 2000;
+      }
+
+      /* List menu mobile */
+      .nav-menu-mobile {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+      }
+      .nav-menu-mobile li {
+        width: 100%;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 10px;
+      }
+
+      .nav-menu-mobile li a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      /* Auth */
+      .auth-mobile {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 35vh;
+      }
+      .auth-mobile a {
+        color: white;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      /* Hanya untuk max-width 992px */
+      @media (max-width: 992px) {
+        .hamburger {
+          display: flex;
+        }
+        .nav-menu,
+        .auth-buttons {
+          display: none !important;
+        }
+        .mobile-menu.active {
+          right: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -365,6 +447,26 @@
       <div class="auth-buttons">
         <a class="signin" href="#login">Sign In</a>
         <a class="signup" href="#daftar">Sign Up</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-menu-mobile">
+          <li><a href="Beranda.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="staf.html">Staf</a></li>
+          <li><a href="Pesan.html">Pesan</a></li>
+        </ul>
+
+        <div class="auth-mobile">
+          <a class="signin" href="#login">Sign In</a>
+          <a class="signup" href="#daftar">Sign Up</a>
+        </div>
       </div>
     </nav>
     <!-- ================= HERO ================= -->
@@ -438,13 +540,28 @@
       </div>
     </footer>
     <script>
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      // Open
+      hamburger.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+      });
+
+      // Klik luar menutup menu
+      document.addEventListener("click", (e) => {
+        if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+          mobileMenu.classList.remove("active");
+        }
+      });
+
       const typeLine = document.getElementById("typeLine");
       const typeLines = [
         " Hidangan nasi lengkap dengan lauk pauk pilihan yang memanjakan lidah dan bikin begoyang di mulut kenyang di perut.",
       ];
       /* ================= TYPING EFFECT ================= */
-      let textIndex = 0; // kalimat ke berapa (kalau nanti mau banyak)
-      let charIndex = 0; // huruf ke berapa
+      let textIndex = 0;
+      let charIndex = 0;
 
       function typeEffect() {
         const currentText = typeLines[textIndex];
