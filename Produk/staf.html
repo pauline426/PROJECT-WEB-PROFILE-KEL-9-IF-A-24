@@ -31,23 +31,7 @@
         overflow-x: hidden;
       }
 
-      /* HEADER */
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 2rem;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        color: inherit;
-        transition: transform 0.25s ease;
-      }
-
-      /* Nge hide header saat di scroll */
-      header.hide {
-        transform: translateY(-100%);
-      }
+     /* ===================== Navbar ===================== */
       .logo-area {
         display: flex;
         align-items: center;
@@ -160,13 +144,8 @@
         color: white;
       }
 
-      body:not(.dark-mode) .signin:hover {
-        color: #fff !important;
-        background-color: #f27202;
-        border-color: #fff !important;
-      }
-
-      /* HERO */
+      
+/* ===================== HERO ===================== */
       .hero {
         padding-top: 48px;
         text-align: center;
@@ -186,7 +165,7 @@
         line-height: 1.8;
       }
 
-      /* TEAM GRID */
+     /* ===================== CARD TEAM ===================== */
       .team-section {
         margin: 40px auto 120px;
         padding: 0 6%;
@@ -273,8 +252,7 @@
         font-size: 15px;
       }
 
-      /* stylepelayan*/
-      /* style pramusaji */
+      /* ===================== STYLE PRAMUSAJI ===================== */
       .pramusaji-section {
         position: relative;
         width: 100%;
@@ -324,7 +302,7 @@
         font-style: italic;
       }
 
-      /* FOOTER */
+      /* ===================== FOOTER ===================== */
       .footer {
         background: #222;
         color: #eee;
@@ -392,8 +370,7 @@
       <!-- Owner -->
       <div
         class="member"
-        data-info="Nama: Galuh Pauline\nJabatan: Owner & Pendiri\nPengalaman: 5 tahun mengelola usaha kuliner"
-      >
+        data-info="Nama: Galuh Pauline\nJabatan: Owner & Pendiri\nPengalaman: 5 tahun mengelola usaha kuliner">
         <div class="photo">
           <img src="img/owner.jpeg" alt="Owner" />
         </div>
@@ -448,6 +425,7 @@
       </div>
     </section>
 
+    <!-- Footer -->
      <footer class="footer">
       <div class="footer-container">
         <!-- Brand -->
@@ -472,7 +450,7 @@
         <!-- Jam Operasional -->
         <div class="footer-column">
           <h4>Jam Operasional</h4>
-          <p>Senin - Sabtu<br />07:00 – 20:00 WIB</p>
+          <p>Senin - Jumat<br />07:00 – 20:00 WIB</p>
           <br />
           <p>Sabtu - Minggu<br />07:00 – 21:00 WIB</p>
         </div>
@@ -499,9 +477,15 @@
 
         lastScroll = currentScroll;
       });
+
+ // Highlight menu sesuai halaman yang sedang dibuka
+
+      // Ambil nama file halaman dari URL (contoh: menu.html)
       const currentPage = window.location.pathname.split("/").pop();
+      // Ambil semua link menu navbar
       const menuLinks = document.querySelectorAll(".nav-menu li a");
 
+  // Cek tiap link, jika sesuai dengan halaman sekarang → beri efek 'active'
       menuLinks.forEach((link) => {
         if (link.getAttribute("href") === currentPage) {
           link.classList.add("active");

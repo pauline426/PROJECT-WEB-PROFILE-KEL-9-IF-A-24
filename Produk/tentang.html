@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+  /* === Variabel warna utama untuk kemudahan editing warna global === */
   :root{
     --orange:#f27202;
     --orange-2:#ff8a2b;
@@ -16,6 +17,7 @@
     --white:#ffffff;
   }
 
+  /*=========setting dasar elemen============= */
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
@@ -29,24 +31,7 @@
     background: #fff7ef;
   }
 
-  /* HEADER */
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 2rem;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        color: inherit;
-        transition: transform 0.25s ease;
-      }
-
-      /* Nge hide header saat di scroll */
-      header.hide {
-      transform: translateY(-100%);
-      }
-
+  /* ==================== NAVBAR ==================== */
       .logo-area {
         display: flex;
         align-items: center;
@@ -174,12 +159,7 @@
         color: white;
       }
 
-      body:not(.dark-mode) .signin:hover {
-        color: #fff !important;
-        background-color: #f27202;
-        border-color: #fff !important;
-      }
-
+      /* ==================== MAIN ==================== */
   /* Container */
   .container{
     max-width:1200px;
@@ -270,7 +250,7 @@
   @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
   .floating{animation:floaty 4s ease-in-out infinite}
 
-  /* SECTION: HIGHLIGHTS (fun facts) */
+  /* SECTION: HIGHLIGHTS */
   .highlights{
     display:flex;
     gap:20px;
@@ -427,7 +407,7 @@
   right: -7px;
 }
 
-/* Style keunggulan resto */
+/* ==================== KEUNGGULAN RESTO ==================== */
 .advantages-simple {
   padding: 60px 20px;
   background: #faf8f5;
@@ -481,7 +461,7 @@
 }
 
 
-/* Responsive */
+/* ==================== RESPONSIVE ==================== */
 @media(max-width:600px){
   .adv-list li {
     flex-direction: row;
@@ -496,7 +476,7 @@
 }
 
 
-  /* responsive */
+ /* ==================== RESPONSIVE ==================== */
   @media(max-width:1000px){
     .hero{flex-direction:column;padding:120px 5% 40px}
     .hero-left{width:100%}
@@ -512,7 +492,7 @@
     nav a{font-size:14px}
   }
 
-   /* FOOTER */
+/* ==================== FOOTER ==================== */
   .footer {
   background: #222;
   color: #eee;
@@ -560,7 +540,7 @@
         <li><a href="tentang.html">Tentang</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="staf.html">Staf</a></li>
-        <li><a href="Pesan.html">Pesan/a></li>
+        <li><a href="Pesan.html">Pesan</a></li>
       </ul>
       <div class="auth-buttons">
         <a class="signin" href="#login">Sign In</a>
@@ -569,7 +549,6 @@
     </nav>
 
 <main class="container">
-  <!-- HERO / narrative -->
   <section class="hero" id="hero">
     <div class="hero-left">
       <h1 class="title">Kenikmatan Masakan Rumahan Di Setiap Suapan</span></h1>
@@ -741,7 +720,7 @@
     <!-- Jam Operasional -->
     <div class="footer-column">
       <h4>Jam Operasional</h4>
-      <p>Senin - Sabtu<br>07:00 – 20:00 WIB</p> <br>
+      <p>Senin - Jumat<br>07:00 – 20:00 WIB</p> <br>
       <p>Sabtu - Minggu<br>07:00 – 21:00 WIB</p>
     </div>
   </div>
@@ -809,6 +788,7 @@ function typeLoop(){
     }, pauseBetweenLines);
   }
 }
+// Mulai efek ketik
 typeLoop();
 
  // animasi porsi terjual
