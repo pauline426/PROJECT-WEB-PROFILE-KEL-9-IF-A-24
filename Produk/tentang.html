@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+  /* === Variabel warna utama untuk kemudahan editing warna global === */
   :root{
     --orange:#f27202;
     --orange-2:#ff8a2b;
@@ -16,6 +17,7 @@
     --white:#ffffff;
   }
 
+  /*=========setting dasar elemen============= */
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
@@ -29,49 +31,7 @@
     background: #fff7ef;
   }
 
-  /* HEADER */
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 2rem;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        color: inherit;
-        transition: transform 0.25s ease;
-      }
-
-      /* Nge hide header saat di scroll */
-      header.hide {
-      transform: translateY(-100%);
-      }
-
-      .logo-area {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .logo {
-        height: 60px;
-        width: 60px;
-        border-radius: 50%;
-        background: #fff;
-        padding: 5px;
-        box-shadow: 0 0 20px rgba(255, 166, 0, 0.6),
-          0 0 40px rgba(255, 166, 0, 0.3);
-      }
-
-      .brand-text {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #f27202;
-        transition: color 0.5s ease;
-        line-height: 1.3;
-      }
-
-     nav {
+ nav {
         width: 100%;
         padding: 20px 50px;
         display: flex;
@@ -93,29 +53,14 @@
         box-shadow: 0 0 20px rgba(255, 166, 0, 0.6),
           0 0 40px rgba(255, 166, 0, 0.3);
       }
-
-      nav ul li {
-        cursor: pointer;
-        font-weight: 600;
-        color: inherit;
-        transition: color 0.3s;
-      }
-
-        .nav-menu li a.active {
-      background-color: #f27202;
-      color: white !important;
-      padding: 8px 15px;
-      border-radius: 20px;
-      transition: 0.3s;
-      }
-
-      nav ul li:hover {
+      .brand-text {
+        font-size: 1.1rem;
+        font-weight: 700;
         color: #f27202;
         transition: color 0.5s ease;
         line-height: 1.3;
       }
 
-      /* Menu di tengah */
       .nav-menu {
         display: flex;
         gap: 40px;
@@ -129,28 +74,25 @@
         text-decoration: none;
         font-weight: bold;
         background-color: #ff7a00;
-        padding: 5px 15px;
+        padding: 8px 15px;
         border-radius: 50px;
         transition: 0.3s ease;
         display: inline-block;
         transform: scale(1);
       }
 
-      /* Membesar saat hover */
       .nav-menu li a:hover {
         transform: scale(1.25);
         background-color: #ff9a2a;
         color: #fff;
       }
 
-      /* Membesar saat halaman itu aktif (visited / current) */
       .nav-menu li a.active {
         transform: scale(1.25);
         background-color: #ff9a2a;
         color: #fff;
       }
 
-      /* Tombol kanan */
       .auth-buttons {
         display: flex;
         gap: 15px;
@@ -174,12 +116,98 @@
         color: white;
       }
 
-      body:not(.dark-mode) .signin:hover {
-        color: #fff !important;
-        background-color: #f27202;
-        border-color: #fff !important;
+      /* ===================== RESPONSIVE TABLET ===================== */
+      @media (max-width: 992px) {
+        nav {
+          padding: 15px 30px;
+        }
+
+        .nav-menu {
+          gap: 20px;
+        }
+      }  
+
+      /* ======== HAMBURGER MOBILE & TABLET MENU ======= */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 2001;
+      }
+      .hamburger span {
+        width: 30px;
+        height: 4px;
+        background: #ff7a00;
+        border-radius: 3px;
       }
 
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 100vh;
+        background: #ff7a00;
+        transition: 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        z-index: 2000;
+      }
+
+      .nav-menu-mobile {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+      }
+      .nav-menu-mobile li {
+        width: 100%;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 10px;
+      }
+
+      .nav-menu-mobile li a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .auth-mobile {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 35vh;
+      }
+      .auth-mobile a {
+        color: white;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      @media (max-width: 992px) {
+        .hamburger {
+          display: flex;
+        }
+        .nav-menu,
+        .auth-buttons {
+          display: none !important;
+        }
+        .mobile-menu.active {
+          right: 0;
+        }
+      }
+
+
+      /* ==================== MAIN ==================== */
   /* Container */
   .container{
     max-width:1200px;
@@ -202,12 +230,36 @@
   .hero-left{
     flex:0 0 58%
   }
+  
   .title{
     font-family:"Playfair Display",serif;
     font-size:44px;color:var(--dark);line-height:1.02;margin-bottom:18px;
     text-shadow:0 6px 20px rgba(242,114,2,0.03);
     margin-top: 25px;
   }
+
+ /* RESPONSIVE MOBILE */
+@media (max-width: 600px) {
+  .title {
+    margin-top: 0 !important;
+  }
+  .hero, .hero-left {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+/* RESPONSIVE TABLET */
+      @media (max-width: 992px) {
+       .title {
+    margin-top: 0 !important;
+  }
+  .hero, .hero-left {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+      }
+
   .lead{
     color:var(--muted);
     font-size:17px;
@@ -270,7 +322,7 @@
   @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
   .floating{animation:floaty 4s ease-in-out infinite}
 
-  /* SECTION: HIGHLIGHTS (fun facts) */
+  /* SECTION: HIGHLIGHTS */
   .highlights{
     display:flex;
     gap:20px;
@@ -427,7 +479,7 @@
   right: -7px;
 }
 
-/* Style keunggulan resto */
+/* ==================== KEUNGGULAN RESTO ==================== */
 .advantages-simple {
   padding: 60px 20px;
   background: #faf8f5;
@@ -481,7 +533,7 @@
 }
 
 
-/* Responsive */
+/* ==================== RESPONSIVE ==================== */
 @media(max-width:600px){
   .adv-list li {
     flex-direction: row;
@@ -496,15 +548,33 @@
 }
 
 
-  /* responsive */
+ /* ==================== RESPONSIVE ==================== */
   @media(max-width:1000px){
-    .hero{flex-direction:column;padding:120px 5% 40px}
-    .hero-left{width:100%}
-    .hero-right{width:100%;justify-content:center;margin-top:18px}
-    .card{width:320px;height:280px}
-    .highlights{flex-direction:column}
-    .stat{width:100%}
-    .stage-inner{gap:14px}
+    .hero{
+      flex-direction:column;
+      padding:120px 5% 40px
+    }
+    .hero-left{
+      width:100%
+    }
+    .hero-right{
+      width:100%;
+      justify-content:center;
+      margin-top:0px
+    }
+    .card{
+      width:320px;
+      height:280px
+    }
+    .highlights{
+      flex-direction:column
+    }
+    .stat{
+      width:100%
+    }
+    .stage-inner{
+      gap:14px
+    }
   }
   @media(max-width:520px){
     .title{font-size:28px}
@@ -512,7 +582,7 @@
     nav a{font-size:14px}
   }
 
-   /* FOOTER */
+/* ==================== FOOTER ==================== */
   .footer {
   background: #222;
   color: #eee;
@@ -550,7 +620,8 @@
 <!-- Wave soft background -->
 <div class="wave-wrap" aria-hidden="true"><div class="big-wave"></div></div>
 
- <nav>
+ <!-- ================= NAVBAR ================= -->
+    <nav>
       <div class="logo-area">
         <img src="img/logo.png" alt="Logo" class="logo" />
         <span class="brand-text">Serba Serbi Nasi<br />Bu Henny</span>
@@ -560,21 +631,41 @@
         <li><a href="tentang.html">Tentang</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="staf.html">Staf</a></li>
-        <li><a href="Pesan.html">Pesan/a></li>
+        <li><a href="Pesan.html">Pesan</a></li>
       </ul>
       <div class="auth-buttons">
         <a class="signin" href="#login">Sign In</a>
         <a class="signup" href="#daftar">Sign Up</a>
       </div>
+      <!-- ================= NAVBAR HUMBERGER ================= -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-menu-mobile">
+          <li><a href="Beranda.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="staf.html">Staf</a></li>
+          <li><a href="Pesan.html">Pesan</a></li>
+        </ul>
+
+        <div class="auth-mobile">
+          <a class="signin" href="#login">Sign In</a>
+          <a class="signup" href="#daftar">Sign Up</a>
+        </div>
+      </div>
     </nav>
 
 <main class="container">
-  <!-- HERO / narrative -->
   <section class="hero" id="hero">
     <div class="hero-left">
       <h1 class="title">Kenikmatan Masakan Rumahan Di Setiap Suapan</span></h1>
       <p class="lead">Warung Nasi Serba Serbi Bu Henny hadir membawa warisan cita rasa turun-temurun, diolah dari bahan pilihan yang dijaga mutunya. Resto ini berdiri sejak <strong>2024</strong>, kami memegang prinsip bahwa setiap hidangan bukan sekadar makanan melainkan kehangatan yang ingin kami bagi dalam setiap suapan.</p>
-
+      
       <!-- Typing / narrative area -->
       <div class="type-line" id="typeLine" aria-live="polite"></div>
 
@@ -606,7 +697,7 @@
             <img src="img/logo-shopeeFood.png" alt="ShopeeFood">
             <p class="resto-name">Serba Serbi Nasi Bu Henny</p>
         </div>
-        </a>
+
         <div class="logo-box static">
             <img src="img/logo-grabFood.png" alt="GrabFood">
             <p class="resto-name">Serba Serbi Nasi Bu Henny</p>
@@ -741,7 +832,7 @@
     <!-- Jam Operasional -->
     <div class="footer-column">
       <h4>Jam Operasional</h4>
-      <p>Senin - Sabtu<br>07:00 – 20:00 WIB</p> <br>
+      <p>Senin - Jumat<br>07:00 – 20:00 WIB</p> <br>
       <p>Sabtu - Minggu<br>07:00 – 21:00 WIB</p>
     </div>
   </div>
@@ -756,7 +847,7 @@
 
   // Saat scroll header akan hilang
 let lastScroll = 0;
-const header = document.querySelector("header");
+const header = document.querySelector("nav");
 
 window.addEventListener("scroll", () => {
   let currentScroll = window.scrollY;
@@ -785,7 +876,22 @@ let typingSpeed = 30;
 let pauseBetweenLines = 1600;
 
 function typeLoop(){
-  if(tIndex >= typeLines.length){ // stop after finished; keep last line
+
+  /* ================= JS HAMBURGER ================= */
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      hamburger.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+          mobileMenu.classList.remove("active");
+        }
+      });
+
+  if(tIndex >= typeLines.length){ 
     return;
   }
   const current = typeLines[tIndex];
@@ -795,7 +901,7 @@ function typeLoop(){
     setTimeout(typeLoop, typingSpeed);
   } else {
     typeLine.textContent = current;
-    // pause then next line (or end)
+    // jeda lalu baris berikutnya (atau akhir)
     setTimeout(()=>{
       tIndex++;
       charIndex=0;
@@ -803,12 +909,12 @@ function typeLoop(){
         typeLine.textContent = '';
         typeLoop();
       } else {
-        // after finished typing all lines, start auto transition to reviews
-        startAutoStage();
+        // setelah selesai mengetik semua baris, mulai transisi otomatis ke ulasan
       }
     }, pauseBetweenLines);
   }
 }
+// Mulai efek ketik
 typeLoop();
 
  // animasi porsi terjual
