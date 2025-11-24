@@ -16,7 +16,7 @@
       }
 
       /* ================= NAVBAR ================= */
-      nav {
+nav {
         width: 100%;
         padding: 20px 50px;
         display: flex;
@@ -30,8 +30,8 @@
         gap: 1rem;
       }
       .logo {
-        height: 50px;
-        width: 50px;
+        height: 60px;
+        width: 60px;
         border-radius: 50%;
         background: #fff;
         padding: 5px;
@@ -101,6 +101,98 @@
         color: white;
       }
 
+      /* ===================== RESPONSIVE TABLET ===================== */
+      @media (max-width: 992px) {
+        nav {
+          padding: 15px 30px;
+        }
+
+        .nav-menu {
+          gap: 20px;
+        }
+      }  
+
+      /* ======== HAMBURGER MOBILE & TABLET MENU ======= */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 2001;
+      }
+      .hamburger span {
+        width: 30px;
+        height: 4px;
+        background: #ff7a00;
+        border-radius: 3px;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 100vh;
+        background: #ff7a00;
+        transition: 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        z-index: 2000;
+      }
+
+      .nav-menu-mobile {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+      }
+      .nav-menu-mobile li {
+        width: 100%;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 10px;
+      }
+
+      .nav-menu-mobile li a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .auth-mobile {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 35vh;
+      }
+      .auth-mobile a {
+        color: white;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      @media (max-width: 992px) {
+        .hamburger {
+          display: flex;
+        }
+        .nav-menu,
+        .auth-buttons {
+          display: none !important;
+        }
+        .mobile-menu.active {
+          right: 0;
+        }
+      }
+
+
+      /* LAYOUT */
       .container {
         display: grid;
         grid-template-columns: 260px 1fr;
@@ -108,7 +200,7 @@
         flex: 1;
       }
 
-      /*=============== SIDEBAR ================*/
+      /* SIDEBAR */
       .sidebar {
         background: #fff1dd;
         padding: 30px;
@@ -157,12 +249,12 @@
         transform: scaleX(0.45);
       }
 
-      /*============= CONTENT ===========*/
+      /* CONTENT */
       .content {
         padding: 20px;
       }
 
-      /*=============== SEARCH BAR MODERN ============*/
+      /* SEARCH BAR MODERN */
       .search-modern {
         width: 70%;
         margin: 0 auto 25px auto;
@@ -196,13 +288,14 @@
         opacity: 0.7;
       }
 
-      /*============== MENU GRID ===========*/
+      /* MENU GRID */
       .menu-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 25px;
       }
 
+      /* CARD MODEL BARU */
       .card {
         background: white;
         border-radius: 12px;
@@ -219,6 +312,7 @@
         object-fit: cover;
       }
 
+      /* AREA INFO */
       .card-info {
         background: #fff8ef;
         padding: 12px;
@@ -241,7 +335,7 @@
         color: #ff8b00;
       }
 
-      /*============= FOOTER ============*/
+      /* FOOTER */
       .footer {
         background: #222;
         color: #eee;
@@ -274,7 +368,9 @@
       .footer-bottom p {
         padding-top: 20px;
       }
-      /* ============ RESPONSIVE =========== */
+      /* =========================
+   RESPONSIVE TABLET
+   ========================= */
       @media (max-width: 900px) {
         .container {
           grid-template-columns: 200px 1fr;
@@ -293,13 +389,16 @@
         }
       }
 
+      /* =========================
+   RESPONSIVE HP LANDSCAPE
+   ========================= */
       @media (max-width: 700px) {
         nav {
           padding: 10px 15px;
         }
 
         .auth-buttons {
-          display: none;
+          display: none; /* biar gak mepet */
         }
 
         .nav-menu {
@@ -320,6 +419,9 @@
         }
       }
 
+      /* =========================
+   RESPONSIVE HP PORTRAIT
+   ========================= */
       @media (max-width: 520px) {
         nav {
           flex-direction: column;
@@ -333,7 +435,7 @@
         }
 
         .container {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr; /* Sidebar jadi atas */
         }
 
         .sidebar {
@@ -352,7 +454,7 @@
         }
 
         .menu-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr; /* Menu jadi 1 kolom */
         }
 
         .search-modern {
@@ -372,38 +474,46 @@
   </head>
 
   <body>
-    <!----- NAVBAR ----->
+    <!-- NAVBAR -->
+    <!-- ================= NAVBAR ================= -->
     <nav>
       <div class="logo-area">
         <img src="img/logo.png" alt="Logo" class="logo" />
         <span class="brand-text">Serba Serbi Nasi<br />Bu Henny</span>
       </div>
-
       <ul class="nav-menu">
         <li><a href="Beranda.html">Beranda</a></li>
         <li><a href="tentang.html">Tentang</a></li>
-        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="menu.html">Menu</a></li>
         <li><a href="staf.html">Staf</a></li>
         <li><a href="Pesan.html">Pesan</a></li>
       </ul>
-
       <div class="auth-buttons">
         <a class="signin" href="#login">Sign In</a>
         <a class="signup" href="#daftar">Sign Up</a>
       </div>
-    </nav>
-
-    <!-- LAYOUT -->
-    <div class="container">
-      <!-- SIDEBAR -->
-      <div class="sidebar">
-        <h1>Menu Makanan</h1>
-        <div class="menu-item">Hidangan utama</div>
-        <div class="menu-item">Menu paket</div>
-        <div class="menu-item">Minuman</div>
-        <div class="menu-item">Camilan</div>
+      <!-- ================= NAVBAR HUMBERGER ================= -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-menu-mobile">
+          <li><a href="Beranda.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="staf.html">Staf</a></li>
+          <li><a href="Pesan.html">Pesan</a></li>
+        </ul>
+
+        <div class="auth-mobile">
+          <a class="signin" href="#login">Sign In</a>
+          <a class="signup" href="#daftar">Sign Up</a>
+        </div>
+      </div>
+    </nav>
       <!-- CONTENT -->
       <div class="content">
         <div class="search-modern">
@@ -449,6 +559,20 @@
     </footer>
 
     <script>
+      /* ================= JS HAMBURGER ================= */
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      hamburger.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+          mobileMenu.classList.remove("active");
+        }
+      });
+      
       const dataMenu = {
         utama: [
           {
