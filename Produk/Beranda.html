@@ -554,7 +554,7 @@
         if (charIndex < currentText.length) {
           typeLine.innerHTML += currentText.charAt(charIndex);
           charIndex++;
-          setTimeout(typeEffect, 40); // kecepatan ketik
+          setTimeout(typeEffect, 40);
         }
       }
       typeEffect();
@@ -675,7 +675,6 @@
         2500
       );
 
-      // highlight menu navbar
       const currentPage = window.location.pathname.split("/").pop();
       const menuLinks = document.querySelectorAll(".nav-menu li a");
 
