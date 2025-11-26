@@ -13,6 +13,8 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
       }
 
       /* ================= NAVBAR ================= */
@@ -28,6 +30,7 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        margin-left: 20px;
       }
       .logo {
         height: 50px;
@@ -81,7 +84,7 @@
       .auth-buttons {
         display: flex;
         gap: 15px;
-        margin-right: 14vh;
+        margin-right: 15vh;
       }
       .auth-buttons a {
         padding: 10px 18px;
@@ -102,6 +105,7 @@
         color: white;
       }
 
+      /*=============== SIDEBAR ================*/
       .container {
         display: grid;
         grid-template-columns: 260px 1fr;
@@ -109,7 +113,6 @@
         flex: 1;
       }
 
-      /*=============== SIDEBAR ================*/
       .sidebar {
         background: #fff1dd;
         padding: 30px;
@@ -158,12 +161,11 @@
         transform: scaleX(0.45);
       }
 
-      /*============= CONTENT ===========*/
+      /*=============== SEARCH BAR MODERN ============*/
       .content {
         padding: 20px;
       }
 
-      /*=============== SEARCH BAR MODERN ============*/
       .search-modern {
         width: 70%;
         margin: 0 auto 25px auto;
@@ -323,14 +325,12 @@
 
       @media (max-width: 520px) {
         nav {
-          flex-direction: column;
-          gap: 10px;
+          flex-direction: row;
+          justify-content: space-between;
         }
 
         .nav-menu {
-          position: static;
-          transform: none;
-          margin-top: 5px;
+          display: none;
         }
 
         .container {
@@ -359,7 +359,6 @@
         .search-modern {
           width: 100%;
         }
-
         .search-modern input {
           font-size: 15px;
           padding: 12px;
@@ -369,11 +368,91 @@
           height: 200px;
         }
       }
+      /* ======== HAMBURGER MOBILE & TABLET MENU ======= */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 2001;
+        margin-right: 10px;
+        margin-right: 6vh;
+      }
+      .hamburger span {
+        width: 30px;
+        height: 4px;
+        background: #ff7a00;
+        border-radius: 3px;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 200vh;
+        background: #ff7a00;
+        transition: 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        z-index: 2000;
+      }
+
+      .nav-menu-mobile {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+      }
+      .nav-menu-mobile li {
+        width: 100%;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 10px;
+      }
+
+      .nav-menu-mobile li a {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .auth-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30vh;
+      }
+      .auth-mobile a {
+        color: white;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      @media (max-width: 992px) {
+        .hamburger {
+          display: flex;
+        }
+        .nav-menu,
+        .auth-buttons {
+          display: none !important;
+        }
+        .mobile-menu.active {
+          right: 0;
+        }
+      }
     </style>
   </head>
 
   <body>
     <!----- NAVBAR ----->
+    <!-- ================= NAVBAR ================= -->
     <nav>
       <div class="logo-area">
         <img src="img/logo.png" alt="Logo" class="logo" />
@@ -391,6 +470,29 @@
       <div class="auth-buttons">
         <a class="signin" href="#login">Sign In</a>
         <a class="signup" href="#daftar">Sign Up</a>
+      </div>
+
+      <!-- HAMBURGER BUTTON -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- MOBILE MENU -->
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="nav-menu-mobile">
+          <li><a href="Beranda.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="menu.html" class="active">Menu</a></li>
+          <li><a href="staf.html">Staf</a></li>
+          <li><a href="Pesan.html">Pesan</a></li>
+        </ul>
+
+        <div class="auth-mobile">
+          <a href="#login">Sign In</a>
+          <a href="#daftar">Sign Up</a>
+        </div>
       </div>
     </nav>
 
@@ -643,6 +745,19 @@
       });
 
       renderMenu(dataMenu.utama);
+
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      hamburger.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+          mobileMenu.classList.remove("active");
+        }
+      });
     </script>
   </body>
 </html>
